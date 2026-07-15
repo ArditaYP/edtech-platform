@@ -45,4 +45,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::post('/admin/courses/{course}/toggle-status', [AdminDashboardController::class, 'toggleStatus'])->name('admin.courses.toggle-status');
     Route::get('/admin/transactions', [AdminTransactionController::class, 'index'])->name('admin.transactions.index');
+    Route::post('/admin/transactions/{transaction}/approve', [AdminTransactionController::class, 'approveManual'])->name('admin.transactions.approve');
+    Route::post('/admin/transactions/{transaction}/cancel', [AdminTransactionController::class, 'cancelManual'])->name('admin.transactions.cancel');
 });

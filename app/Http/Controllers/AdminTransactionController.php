@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
+use App\Models\Enrollment;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -46,5 +47,39 @@ class AdminTransactionController extends Controller
             'todayTransactionsCount',
             'pendingTransactionsCount'
         ));
+    }
+
+    /**
+     * Manually approve a pending transaction and enroll the student.
+     */
+    public function approveManual(Transaction $transaction)
+    {
+        if ($transaction->status !== 'paid') {
+            $transaction->update([
+                'status' => 'paid',
+                'payment_type' => $transaction->payment_type ?? 'manual_override',
+            ]);
+
+            Enrollment::firstOrCreate([
+                'user_id' => $transaction->user_id,
+                'course_id' => $transaction->course_id,
+            ], [
+                'status' => 'active'
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Transaksi berhasil diverifikasi lunas secara manual.');
+    }
+
+    /**
+     * Manually cancel a transaction.
+     */
+    public function cancelManual(Transaction $transaction)
+    {
+        $transaction->update([
+            'status' => 'failed',
+        ]);
+
+        return redirect()->back()->with('success', 'Transaksi berhasil dibatalkan.');
     }
 }

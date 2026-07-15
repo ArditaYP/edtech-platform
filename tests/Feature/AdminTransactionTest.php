@@ -174,4 +174,78 @@ class AdminTransactionTest extends TestCase
         $response->assertSee('EDU-PEND');
         $response->assertDontSee('EDU-PAID');
     }
+
+    public function test_admin_can_manually_approve_transaction_and_create_enrollment(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+        $student = User::factory()->create();
+        $category = Category::create(['name' => 'Tech', 'slug' => 'tech', 'icon' => 'code']);
+        $course = Course::create([
+            'category_id' => $category->id,
+            'title' => 'Web Dev',
+            'slug' => 'web-dev',
+            'description' => 'Test',
+            'level' => 'Pemula',
+            'duration_hours' => 5,
+            'rating' => 4.5,
+            'price' => 50000,
+        ]);
+
+        $transaction = Transaction::create([
+            'order_id' => 'EDU-PENDING',
+            'user_id' => $student->id,
+            'course_id' => $course->id,
+            'amount' => 50000,
+            'status' => 'pending',
+        ]);
+
+        $response = $this->actingAs($admin)->post("/admin/transactions/{$transaction->id}/approve");
+
+        $response->assertRedirect();
+        $response->assertSessionHas('success');
+        
+        $transaction->refresh();
+        $this->assertEquals('paid', $transaction->status);
+        $this->assertEquals('manual_override', $transaction->payment_type);
+
+        // Verify active enrollment is created
+        $this->assertDatabaseHas('enrollments', [
+            'user_id' => $student->id,
+            'course_id' => $course->id,
+            'status' => 'active',
+        ]);
+    }
+
+    public function test_admin_can_manually_cancel_transaction(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+        $student = User::factory()->create();
+        $category = Category::create(['name' => 'Tech', 'slug' => 'tech', 'icon' => 'code']);
+        $course = Course::create([
+            'category_id' => $category->id,
+            'title' => 'Web Dev',
+            'slug' => 'web-dev',
+            'description' => 'Test',
+            'level' => 'Pemula',
+            'duration_hours' => 5,
+            'rating' => 4.5,
+            'price' => 50000,
+        ]);
+
+        $transaction = Transaction::create([
+            'order_id' => 'EDU-PENDING2',
+            'user_id' => $student->id,
+            'course_id' => $course->id,
+            'amount' => 50000,
+            'status' => 'pending',
+        ]);
+
+        $response = $this->actingAs($admin)->post("/admin/transactions/{$transaction->id}/cancel");
+
+        $response->assertRedirect();
+        $response->assertSessionHas('success');
+        
+        $transaction->refresh();
+        $this->assertEquals('failed', $transaction->status);
+    }
 }
