@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\AssessmentController;
 use App\Http\Controllers\StudentDashboardController;
+use App\Http\Controllers\AdminTransactionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -43,4 +44,5 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::post('/admin/courses/{course}/toggle-status', [AdminDashboardController::class, 'toggleStatus'])->name('admin.courses.toggle-status');
+    Route::get('/admin/transactions', [AdminTransactionController::class, 'index'])->name('admin.transactions.index');
 });
