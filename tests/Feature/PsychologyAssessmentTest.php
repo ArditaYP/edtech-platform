@@ -24,8 +24,8 @@ class PsychologyAssessmentTest extends TestCase
         $this->assertTrue($course->is_assessment);
         $this->assertEquals(150000, $course->price);
 
-        // Assert 10 questions are seeded
-        $this->assertCount(10, $course->questions);
+        // Assert 50 questions are seeded
+        $this->assertCount(50, $course->questions);
 
         // Assert each question has 4 options
         foreach ($course->questions as $question) {
@@ -70,10 +70,10 @@ class PsychologyAssessmentTest extends TestCase
         $response->assertStatus(200);
         $response->assertViewIs('assessments.take');
 
-        // Prepare mock answers (let's pick Options that map to categories: 6 HR, 4 Trainer)
+        // Prepare mock answers (let's pick Options that map to categories: 30 HR, 20 Trainer)
         $answers = [];
         foreach ($course->questions as $index => $question) {
-            if ($index < 6) {
+            if ($index < 30) {
                 // Option corresponding to 'hr'
                 $option = $question->options->where('category_result', 'hr')->first();
             } else {

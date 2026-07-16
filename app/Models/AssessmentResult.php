@@ -16,11 +16,13 @@ class AssessmentResult extends Model
         'answers_payload',
         'top_category',
         'percentages_payload',
+        'weakness_analysis',
     ];
 
     protected $casts = [
         'answers_payload' => 'array',
         'percentages_payload' => 'array',
+        'weakness_analysis' => 'array',
     ];
 
     /**

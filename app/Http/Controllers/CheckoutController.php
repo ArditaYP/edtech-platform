@@ -36,6 +36,36 @@ class CheckoutController extends Controller
         // 2. Generate unique order ID
         $orderId = 'EDU-' . time() . '-' . $user->id;
 
+        // Check if bypass is active
+        if (config('midtrans.bypass') === true || $course->price == 0) {
+            // a. Create paid transaction record
+            Transaction::create([
+                'order_id' => $orderId,
+                'user_id' => $user->id,
+                'course_id' => $course->id,
+                'amount' => $course->price,
+                'status' => 'paid',
+                'payment_type' => 'bypass_test',
+            ]);
+
+            // b. Create active enrollment
+            \App\Models\Enrollment::firstOrCreate([
+                'user_id' => $user->id,
+                'course_id' => $course->id,
+            ], [
+                'status' => 'active'
+            ]);
+
+            // c. Check if assessment
+            if ($course->is_assessment == true) {
+                return redirect()->route('assessments.take', $course->slug)
+                    ->with('success', 'Mode Tes: Pembayaran berhasil dilewati. Selamat mengerjakan asesmen!');
+            }
+
+            return redirect()->route('student.dashboard')
+                ->with('success', 'Pembayaran berhasil didelegasikan. Selamat belajar!');
+        }
+
         // 3. Prepare Midtrans parameters
         $params = [
             'transaction_details' => [

@@ -356,4 +356,82 @@ class TransactionEnrollmentTest extends TestCase
             'status' => 'active',
         ]);
     }
+
+    public function test_checkout_bypass_mode_for_testing(): void
+    {
+        // 1. Enable bypass
+        config(['midtrans.bypass' => true]);
+
+        $user = User::factory()->create();
+
+        $category = Category::create([
+            'name' => 'Marketing',
+            'slug' => 'marketing',
+            'icon' => 'globe',
+        ]);
+
+        $course = Course::create([
+            'category_id' => $category->id,
+            'title' => 'Digital Marketing',
+            'slug' => 'digital-marketing',
+            'description' => 'Test course',
+            'level' => 'Pemula',
+            'duration_hours' => 12,
+            'rating' => 4.6,
+            'total_students' => 15,
+            'price' => 150000,
+            'is_assessment' => false,
+        ]);
+
+        $response = $this->actingAs($user)->post('/checkout/' . $course->id);
+
+        $response->assertRedirect('/dashboard');
+        $response->assertSessionHas('success', 'Pembayaran berhasil didelegasikan. Selamat belajar!');
+
+        $this->assertDatabaseHas('transactions', [
+            'user_id' => $user->id,
+            'course_id' => $course->id,
+            'amount' => 150000,
+            'status' => 'paid',
+            'payment_type' => 'bypass_test',
+        ]);
+
+        $this->assertDatabaseHas('enrollments', [
+            'user_id' => $user->id,
+            'course_id' => $course->id,
+            'status' => 'active',
+        ]);
+    }
+
+    public function test_checkout_bypass_mode_for_assessment_course(): void
+    {
+        // 1. Enable bypass
+        config(['midtrans.bypass' => true]);
+
+        $user = User::factory()->create();
+
+        $category = Category::create([
+            'name' => 'Psikologi',
+            'slug' => 'psikologi',
+            'icon' => 'user',
+        ]);
+
+        $course = Course::create([
+            'category_id' => $category->id,
+            'title' => 'Tes Asesmen',
+            'slug' => 'tes-asesmen',
+            'description' => 'Test course',
+            'level' => 'Pemula',
+            'duration_hours' => 2,
+            'rating' => 4.8,
+            'total_students' => 10,
+            'price' => 150000,
+            'is_assessment' => true,
+        ]);
+
+        $response = $this->actingAs($user)->post('/checkout/' . $course->id);
+
+        $response->assertRedirect('/assessments/tes-asesmen/take');
+        $response->assertSessionHas('success', 'Mode Tes: Pembayaran berhasil dilewati. Selamat mengerjakan asesmen!');
+    }
 }
