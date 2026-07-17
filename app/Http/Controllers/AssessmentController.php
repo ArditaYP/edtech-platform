@@ -508,10 +508,26 @@ class AssessmentController extends Controller
      */
     public function getRadarChartUrl(array $topCareers): string
     {
+        $aliases = [
+            'dokter_medis' => 'Life Protector',
+            'guru_pendidik' => 'Education',
+            'software_engineer' => 'Systems & Code',
+            'hr_talent' => 'Talent & Org',
+            'konselor_psikolog' => 'Soul Mentor',
+            'financial_analyst' => 'Wealth & Risk',
+            'arsitek_desainer' => 'Creative Design',
+            'entrepreneur' => 'Business Venture',
+            'legal_lawyer' => 'Legal & Justice',
+            'digital_marketer' => 'Growth Marketing',
+            'content_creator' => 'Storytelling',
+            'data_scientist' => 'Data Science',
+        ];
+
         $labels = [];
         $data = [];
         foreach ($topCareers as $career) {
-            $labels[] = $career['label'];
+            $key = $career['key'] ?? '';
+            $labels[] = $aliases[$key] ?? ($career['label'] ?? 'Potensi');
             $data[] = $career['score'];
         }
 
@@ -540,8 +556,8 @@ class AssessmentController extends Controller
                         'display' => false
                     ],
                     'pointLabels' => [
-                        'fontSize' => 9,
-                        'fontColor' => '#1E293B',
+                        'fontSize' => 10,
+                        'fontColor' => '#0F172A',
                         'fontStyle' => 'bold'
                     ],
                     'gridLines' => [
@@ -557,6 +573,6 @@ class AssessmentController extends Controller
             ]
         ];
 
-        return 'https://quickchart.io/chart?c=' . urlencode(json_encode($chartConfig)) . '&w=380&h=280';
+        return 'https://quickchart.io/chart?c=' . urlencode(json_encode($chartConfig)) . '&w=380&h=260';
     }
 }
