@@ -215,23 +215,23 @@ class AssessmentController extends Controller
         // Category Details mapping for top category recommendation
         $categoryDetails = [
             'konselor' => [
-                'title' => 'Konselor / Psikolog Kerja',
-                'desc' => 'Memiliki tingkat empati tinggi untuk membantu individu mengurai hambatan emosional dan kejenuhan kerja.',
+                'title' => 'THE EMPOWERING MENTOR & EMPATHETIC SUPPORT™',
+                'desc' => 'Anda unggul dalam mendengarkan, merawat kesejahteraan mental tim, dan menciptakan lingkungan kerja yang aman secara emosional.',
                 'insight' => 'Kekuatan empati Anda sangat menonjol. Tetapkan batasan emosional yang sehat dalam mendengarkan keluhan orang lain.'
             ],
             'hr' => [
-                'title' => 'HR & Talent Acquisition Specialist',
-                'desc' => 'Unggul dalam penataan staf yang adil, rekrutmen, serta penyelarasan talenta dengan arah bisnis.',
+                'title' => 'THE TALENT STRATEGIST & TEAM BUILDER™',
+                'desc' => 'Anda memiliki kepemimpinan alami dalam merancang struktur kerja, mengidentifikasi bakat terbaik, dan menyelaraskan tim demi efisiensi operasional organisasi.',
                 'insight' => 'Kemampuan manajerial Anda sangat kuat. Berikan sentuhan pendekatan personal yang hangat di samping SOP yang tegas.'
             ],
             'ux_researcher' => [
-                'title' => 'UI/UX Behavior Researcher',
-                'desc' => 'Didorong oleh rasa ingin tahu ilmiah untuk menganalisis perilaku pengguna di depan sistem kerja.',
+                'title' => 'THE ANALYTICAL BEHAVIOR RESEARCHER™',
+                'desc' => 'Anda didorong oleh rasa ingin tahu ilmiah untuk menganalisis perilaku, memecahkan masalah kompleks berbasis data, dan menyempurnakan kegunaan sistem.',
                 'insight' => 'Ketajaman analisis Anda luar biasa. Seimbangkan analisis data Anda dengan tindakan eksekusi yang responsif dan taktis.'
             ],
             'trainer' => [
-                'title' => 'Trainer & People Developer',
-                'desc' => 'Senang memandu forum, melatih kelompok besar, dan menyederhanakan konsep rumit menjadi materi praktis.',
+                'title' => 'THE INSPIRATIONAL EDUCATOR & SKILL DEVELOPER™',
+                'desc' => 'Anda adalah komunikator ulung yang mampu membakar motivasi kelompok, memandu forum diskusi, dan menyederhanakan materi rumit menjadi keterampilan praktis.',
                 'insight' => 'Gaya komunikasi Anda sangat inspiratif. Sediakan porsi mendengarkan yang lebih besar bagi audiens Anda.'
             ]
         ];
@@ -289,8 +289,22 @@ class AssessmentController extends Controller
             ];
         }
 
-        // Radar chart via QuickChart API for the 4 categories
-        $radarChartUrl = $this->getRadarChartUrl($percentages);
+        // Calculate 5 dimensions scaled between 30 and 100 for a beautiful balanced radar chart
+        $hrVal = $percentages['hr'] ?? 25;
+        $konselorVal = $percentages['konselor'] ?? 25;
+        $uxVal = $percentages['ux_researcher'] ?? 25;
+        $trainerVal = $percentages['trainer'] ?? 25;
+
+        $scores = [
+            'Security' => (int) min(100, max(30, round(35 + ($hrVal * 0.6) + ($konselorVal * 0.4)))),
+            'Contribution' => (int) min(100, max(30, round(30 + ($hrVal * 1.0)))),
+            'Growth' => (int) min(100, max(30, round(30 + ($uxVal * 1.0)))),
+            'Significance' => (int) min(100, max(30, round(30 + ($trainerVal * 1.0)))),
+            'Connection' => (int) min(100, max(30, round(30 + ($konselorVal * 1.0)))),
+        ];
+
+        // Radar chart via QuickChart API for the 5 categories
+        $radarChartUrl = $this->getRadarChartUrl($scores);
         $radarChartBase64 = '';
         try {
             $ctx = stream_context_create([
@@ -320,6 +334,7 @@ class AssessmentController extends Controller
             'course', 
             'result', 
             'percentages', 
+            'scores',
             'radarChartBase64', 
             'signatureBase64',
             'top',
@@ -332,21 +347,22 @@ class AssessmentController extends Controller
     }
 
     /**
-     * Generate QuickChart radar chart URL for the 4 assessment categories.
+     * Generate QuickChart radar chart URL for the 5 assessment categories.
      */
-    public function getRadarChartUrl(array $percentages): string
+    public function getRadarChartUrl(array $scores): string
     {
         $chartConfig = [
             'type' => 'radar',
             'data' => [
-                'labels' => ['Konselor', 'HR', 'UX Researcher', 'Trainer'],
+                'labels' => ['Security', 'Contribution', 'Growth', 'Significance', 'Connection'],
                 'datasets' => [[
-                    'label' => 'Persentase Kecocokan',
+                    'label' => 'Skor Potensi',
                     'data' => [
-                        $percentages['konselor'] ?? 25,
-                        $percentages['hr'] ?? 25,
-                        $percentages['ux_researcher'] ?? 25,
-                        $percentages['trainer'] ?? 25
+                        $scores['Security'],
+                        $scores['Contribution'],
+                        $scores['Growth'],
+                        $scores['Significance'],
+                        $scores['Connection']
                     ],
                     'borderColor' => '#D97706',
                     'backgroundColor' => 'rgba(217, 119, 6, 0.1)',
@@ -383,6 +399,6 @@ class AssessmentController extends Controller
             ]
         ];
 
-        return 'https://quickchart.io/chart?c=' . urlencode(json_encode($chartConfig)) . '&w=350&h=350';
+        return 'https://quickchart.io/chart?c=' . urlencode(json_encode($chartConfig)) . '&w=320&h=300';
     }
 }

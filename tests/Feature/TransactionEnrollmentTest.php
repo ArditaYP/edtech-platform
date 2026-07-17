@@ -183,6 +183,8 @@ class TransactionEnrollmentTest extends TestCase
             'price' => 150000,
         ]);
 
+        config(['midtrans.bypass' => false]);
+
         $this->mock(\App\Services\MidtransService::class, function ($mock) {
             $mock->shouldReceive('getSnapToken')->once()->andReturn('mock-snap-token-12345');
         });
