@@ -6,18 +6,47 @@
     <style>
         @page {
             size: A4 portrait;
-            margin: 0;
+            margin: 0mm;
+        }
+        * {
+            box-sizing: border-box;
         }
         html, body {
-            margin: 0;
-            padding: 0;
+            margin: 0 !important;
+            padding: 0 !important;
             width: 100%;
-            height: auto !important;
+            background-color: #FFFFFF;
             font-family: 'Helvetica', 'Arial', sans-serif;
             font-size: 8pt;
             line-height: 1.3;
             color: #1E293B;
+            page-break-before: avoid !important;
+            page-break-after: avoid !important;
+        }
+        .master-table {
+            width: 100%;
+            height: auto;
+            border-collapse: collapse;
+            table-layout: fixed;
+            page-break-inside: avoid !important;
+        }
+        .sidebar {
+            width: 27%;
+            background-color: #0B132B;
+            color: #FFFFFF;
+            vertical-align: top;
+            padding: 15px 12px;
+            height: 292mm;
+            box-sizing: border-box;
+        }
+        .content {
+            width: 73%;
             background-color: #FFFFFF;
+            color: #1E293B;
+            vertical-align: top;
+            padding: 12px 16px;
+            height: 292mm;
+            box-sizing: border-box;
         }
         .profile-card {
             background-color: #1C2541;
@@ -98,10 +127,10 @@
 </head>
 <body>
 
-    <table class="master-table" width="100%" cellpadding="0" cellspacing="0" style="width: 100%; height: auto; border-collapse: collapse; table-layout: fixed;">
+    <table class="master-table" width="100%" cellpadding="0" cellspacing="0">
         <tr>
             <!-- KOLOM KIRI (Sidebar - 27%) -->
-            <td width="27%" valign="top" style="background-color: #0B132B; color: #FFFFFF; padding: 15px 12px; height: 297mm; box-sizing: border-box;">
+            <td class="sidebar">
                 <div style="font-size: 10.5pt; font-weight: 800; text-transform: uppercase; color: #FFFFFF; letter-spacing: 0.5px;">
                     INSTITUT <span style="color: #D97706;">PSIKOMETRI</span>
                 </div>
@@ -157,7 +186,7 @@
             </td>
             
             <!-- KOLOM KANAN (Main Content - 73%) -->
-            <td width="73%" valign="top" style="padding: 12px 16px; background-color: #FFFFFF; height: 297mm; box-sizing: border-box;">
+            <td class="content">
                 <!-- Top Section -->
                 <div style="background-color: #0F172A; color: #FFFFFF; border-left: 4px solid #D97706; border-radius: 4px; padding: 8px 12px; margin-bottom: 8px;">
                     <div style="font-size: 7pt; color: #D97706; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;">
