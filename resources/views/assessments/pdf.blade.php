@@ -127,50 +127,50 @@
             <!-- KOLOM KIRI (Sidebar - 27%) -->
             <td class="sidebar">
                 <div style="font-size: 10pt; font-weight: 800; text-transform: uppercase; color: #FFFFFF; letter-spacing: 0.5px;">
-                    INSTITUT <span style="color: #D97706;">PSIKOMETRI</span>
+                    IMT
                 </div>
                 <div style="font-size: 6.5pt; color: #94A3B8; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1px; margin-bottom: 8px;">
                     Laporan Asesmen Karir
                 </div>
-                
+
                 <div style="font-size: 7.5pt; font-weight: bold; color: #D97706; text-transform: uppercase; border-bottom: 1px solid #1E293B; padding-bottom: 2px; margin-top: 6px;">
                     Profil Peserta
                 </div>
-                
+
                 <div class="profile-card">
                     <span class="profile-label">Nama Lengkap</span>
                     <span class="profile-val">{{ $user->name }}</span>
-                    
+
                     <span class="profile-label">Tanggal Lahir</span>
                     <span class="profile-val">18 Agustus 2002</span>
-                    
+
                     <span class="profile-label">Jenis Kelamin</span>
                     <span class="profile-val">Laki-laki</span>
-                    
+
                     <span class="profile-label">Pekerjaan</span>
                     <span class="profile-val">Mahasiswa / Siswa</span>
-                    
+
                     <span class="profile-label">Tanggal Tes</span>
                     <span class="profile-val">{{ $result->created_at->format('d M Y') }}</span>
-                    
+
                     <span class="profile-label">ID Laporan</span>
                     <span class="profile-val">RP-{{ $result->id }}-{{ $result->created_at->format('Ymd') }}</span>
                 </div>
-                
+
                 <div style="font-size: 7.5pt; font-weight: bold; color: #D97706; text-transform: uppercase; border-bottom: 1px solid #1E293B; padding-bottom: 2px; margin-top: 6px; margin-bottom: 4px;">
                     Tentang Asesmen
                 </div>
                 <div style="font-size: 6.8pt; color: #CBD5E1; text-align: justify; line-height: 1.25;">
                     Asesmen ini mengukur kecenderungan perilaku, motivasi kerja, dan orientasi karir berdasarkan 50 pertanyaan situational judgment. Laporan ini memberikan analisis objektif mengenai potensi kepemimpinan, kompetensi komunikasi, serta area pengembangan diri untuk mengoptimalkan karir masa depan secara berkelanjutan.
                 </div>
-                
+
                 <div class="quote-box">
                     <div class="quote-text">
                         "{{ $top['quote'] ?? 'Satu-satunya kegagalan dalam hidup adalah ketika Anda berhenti mencoba belajar.' }}"
                     </div>
                 </div>
             </td>
-            
+
             <!-- KOLOM KANAN (Main Content - 73%) -->
             <td class="content">
                 <!-- Top Section -->
@@ -185,7 +185,7 @@
                         {{ $top['desc'] }}
                     </div>
                 </div>
-                
+
                 <!-- Center Chart Area -->
                 <div class="main-section-title">Visualisasi Potensi &amp; Legenda Skor</div>
                 <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin-bottom: 4px;">
@@ -228,7 +228,7 @@
                         </td>
                     </tr>
                 </table>
-                
+
                 <!-- Interpretasi Potensi -->
                 <div class="main-section-title">Interpretasi Potensi &amp; Kekuatan Karakter</div>
                 <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; font-size: 7.2pt; width: 100%;">
@@ -254,7 +254,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                
+
                 <!-- Rencana Pengembangan Diri -->
                 <div class="main-section-title">Rencana Pengembangan Diri</div>
                 <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin-top: 3px;">
@@ -292,7 +292,7 @@
                         </td>
                     </tr>
                 </table>
-                
+
                 <!-- Baris Tanda Tangan (Seksi Footer Terpisah) -->
                 <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top: 8px; border-top: 1px solid #E2E8F0; padding-top: 6px;">
                     <tr>
@@ -307,13 +307,13 @@
                                     <img src="{{ $signatureBase64 }}" style="width: 75px; height: 22px; display: inline-block; vertical-align: middle;" />
                                 @endif
                                 <div style="font-size: 8pt; font-weight: bold; color: #0F172A; text-decoration: underline; margin-top: 1px;">
-                                    Dr. Aris Sudrajat, M.Psi.
+                                    Ketut Wiratama., SS., MM., MNLP., RFP., CI., CEI., CBT
                                 </div>
                             </div>
                         </td>
                     </tr>
                 </table>
-                
+
             </td>
         </tr>
     </table>
