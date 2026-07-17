@@ -399,6 +399,6 @@ class AssessmentController extends Controller
             ]
         ];
 
-        return 'https://quickchart.io/chart?c=' . urlencode(json_encode($chartConfig)) . '&w=320&h=300';
+        return 'https://quickchart.io/chart?c=' . urlencode(json_encode($chartConfig)) . '&w=220&h=200';
     }
 }
