@@ -8,9 +8,11 @@
             size: A4 portrait;
             margin: 0;
         }
-        body {
+        html, body {
             margin: 0;
             padding: 0;
+            width: 100%;
+            height: auto !important;
             font-family: 'Helvetica', 'Arial', sans-serif;
             font-size: 8pt;
             line-height: 1.3;
@@ -75,7 +77,8 @@
             border: 1px solid #E2E8F0;
             border-radius: 4px;
             padding: 6px 8px;
-            height: 95px;
+            height: auto;
+            min-height: 130px;
         }
         .grid-box-title {
             font-size: 7.5pt;
@@ -95,7 +98,7 @@
 </head>
 <body>
 
-    <table width="100%" cellpadding="0" cellspacing="0" style="width: 100%; border-collapse: collapse; table-layout: fixed;">
+    <table class="master-table" width="100%" cellpadding="0" cellspacing="0" style="width: 100%; height: auto; border-collapse: collapse; table-layout: fixed;">
         <tr>
             <!-- KOLOM KIRI (Sidebar - 27%) -->
             <td width="27%" valign="top" style="background-color: #0B132B; color: #FFFFFF; padding: 15px 12px; height: 297mm; box-sizing: border-box;">
@@ -255,13 +258,13 @@
                     </tbody>
                 </table>
                 
-                <!-- Rencana Pengembangan Diri & Tanda Tangan (TTD) -->
+                <!-- Rencana Pengembangan Diri -->
                 <div class="main-section-title">Rencana Pengembangan Diri</div>
                 <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin-top: 4px;">
                     <tr>
                         <!-- Col 1: Blind Spot -->
                         <td width="33%" valign="top" style="padding-right: 6px;">
-                            <div class="grid-box" style="border-top: 3px solid #D97706; background-color: #FFFBEB;">
+                            <div class="grid-box" style="border-top: 3px solid #D97706; background-color: #FFFBEB; height: auto; min-height: 130px;">
                                 <div class="grid-box-title" style="color: #B45309;">⚠️ Blind Spot Utama</div>
                                 <div class="grid-box-content" style="color: #78350F; font-size: 7pt; line-height: 1.25;">
                                     {{ $weaknessAnalysis['top_blind_spot'] }}
@@ -270,7 +273,7 @@
                         </td>
                         <!-- Col 2: Langkah Praktis -->
                         <td width="34%" valign="top" style="padding: 0 3px;">
-                            <div class="grid-box" style="border-top: 3px solid #10B981;">
+                            <div class="grid-box" style="border-top: 3px solid #10B981; height: auto; min-height: 130px;">
                                 <div class="grid-box-title" style="color: #047857;">💡 Langkah Praktis</div>
                                 <div class="grid-box-content" style="font-size: 7pt; line-height: 1.25;">
                                     <ul style="margin: 0; padding-left: 10px;">
@@ -283,7 +286,7 @@
                         </td>
                         <!-- Col 3: Wawasan Utama -->
                         <td width="33%" valign="top" style="padding-left: 6px;">
-                            <div class="grid-box" style="border-top: 3px solid #3B82F6;">
+                            <div class="grid-box" style="border-top: 3px solid #3B82F6; height: auto; min-height: 130px;">
                                 <div class="grid-box-title" style="color: #1D4ED8;">🚀 Wawasan Utama</div>
                                 <div class="grid-box-content" style="font-size: 7pt; line-height: 1.25;">
                                     {{ $weaknessAnalysis['development_area'] }}
@@ -295,19 +298,18 @@
                 </table>
                 
                 <!-- Baris Tanda Tangan (Seksi Footer Terpisah) -->
-                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top: 15px; border-top: 1px solid #E2E8F0; padding-top: 6px;">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top: 15px; border-top: 1px solid #E2E8F0; padding-top: 8px;">
                     <tr>
-                        <td valign="middle" style="font-size: 6.5pt; color: #94A3B8; line-height: 1.2;">
-                            Dokumen ini diterbitkan secara elektronik dan sah oleh Edtech Platform Indonesia.<br>
-                            Verifikasi keabsahan hasil psikometri secara resmi.
+                        <td width="55%" valign="bottom" style="font-size: 7pt; color: #64748B; line-height: 1.25;">
+                            Dokumen ini diterbitkan secara elektronik dan sah oleh Edtech Platform Indonesia. Verifikasi keabsahan hasil psikometri secara resmi.
                         </td>
-                        <td align="right" width="40%" valign="bottom" style="padding-right: 5px;">
+                        <td width="45%" align="right" valign="bottom" style="padding-right: 5px;">
                             <div style="display: inline-block; text-align: center;">
                                 <span style="font-size: 7pt; color: #64748B; display: block; margin-bottom: 1px;">Denpasar, Bali</span>
                                 @if($signatureBase64)
                                     <img src="{{ $signatureBase64 }}" style="width: 75px; height: 24px; display: inline-block; vertical-align: middle;" />
                                 @endif
-                                <div style="font-size: 7.5pt; font-weight: bold; color: #0F172A; text-decoration: underline; margin-top: 1px;">
+                                <div style="font-size: 8.5pt; font-weight: bold; color: #0F172A; text-decoration: underline; margin-top: 1px;">
                                     Dr. Aris Sudrajat, M.Psi.
                                 </div>
                             </div>
