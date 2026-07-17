@@ -36,34 +36,23 @@ class CheckoutController extends Controller
         // 2. Generate unique order ID
         $orderId = 'EDU-' . time() . '-' . $user->id;
 
-        // Check if bypass is active
-        if (config('midtrans.bypass') === true || $course->price == 0) {
-            // a. Create paid transaction record
-            Transaction::create([
+        // If bypass config is active OR price is 0, we can mock the snap token to avoid API call
+        $isBypass = (config('midtrans.bypass') === true || $course->price == 0);
+
+        if ($isBypass) {
+            $snapToken = 'mock_snap_token_' . uniqid();
+
+            // Create Transaction record in DB
+            $transaction = Transaction::create([
                 'order_id' => $orderId,
                 'user_id' => $user->id,
                 'course_id' => $course->id,
                 'amount' => $course->price,
-                'status' => 'paid',
-                'payment_type' => 'bypass_test',
+                'status' => 'pending',
+                'snap_token' => $snapToken,
             ]);
 
-            // b. Create active enrollment
-            \App\Models\Enrollment::firstOrCreate([
-                'user_id' => $user->id,
-                'course_id' => $course->id,
-            ], [
-                'status' => 'active'
-            ]);
-
-            // c. Check if assessment
-            if ($course->is_assessment == true) {
-                return redirect()->route('assessments.take', $course->slug)
-                    ->with('success', 'Mode Tes: Pembayaran berhasil dilewati. Selamat mengerjakan asesmen!');
-            }
-
-            return redirect()->route('student.dashboard')
-                ->with('success', 'Pembayaran berhasil didelegasikan. Selamat belajar!');
+            return view('checkout.show', compact('snapToken', 'transaction', 'course'));
         }
 
         // 3. Prepare Midtrans parameters
@@ -107,6 +96,69 @@ class CheckoutController extends Controller
             return redirect()->route('courses.show', $course->slug)
                 ->with('error', 'Gagal memproses transaksi: ' . $e->getMessage());
         }
+    }
+
+    /**
+     * Process bypass payment simulation.
+     */
+    public function processBypass(Request $request, Course $course)
+    {
+        $user = Auth::user();
+
+        // 1. Check if user is already enrolled in this course
+        $isEnrolled = $user->enrollments()
+            ->where('course_id', $course->id)
+            ->where('status', 'active')
+            ->exists();
+
+        if ($isEnrolled) {
+            return redirect()->route('courses.show', $course->slug)
+                ->with('error', 'Anda sudah memiliki kelas ini.');
+        }
+
+        // 2. Find or create transaction for this order
+        $orderId = $request->input('order_id');
+        $transaction = null;
+
+        if ($orderId) {
+            $transaction = Transaction::where('order_id', $orderId)
+                ->where('user_id', $user->id)
+                ->first();
+        }
+
+        if (!$transaction) {
+            $orderId = 'EDU-' . time() . '-' . $user->id;
+            $transaction = Transaction::create([
+                'order_id' => $orderId,
+                'user_id' => $user->id,
+                'course_id' => $course->id,
+                'amount' => $course->price,
+                'status' => 'pending',
+            ]);
+        }
+
+        // 3. Mark transaction as paid
+        $transaction->update([
+            'status' => 'paid',
+            'payment_type' => 'bypass_test',
+        ]);
+
+        // 4. Enroll student
+        \App\Models\Enrollment::firstOrCreate([
+            'user_id' => $user->id,
+            'course_id' => $course->id,
+        ], [
+            'status' => 'active'
+        ]);
+
+        // 5. Redirect based on course type
+        if ($course->is_assessment == true) {
+            return redirect()->route('assessments.take', $course->slug)
+                ->with('success', '✅ Pembayaran disimulasikan berhasil! Selamat mengerjakan asesmen.');
+        }
+
+        return redirect()->route('student.dashboard')
+            ->with('success', '✅ Pembayaran disimulasikan berhasil! Selamat belajar.');
     }
 
     /**

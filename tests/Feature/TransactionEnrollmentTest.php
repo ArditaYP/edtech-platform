@@ -384,9 +384,18 @@ class TransactionEnrollmentTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)->post('/checkout/' . $course->id);
+        $response->assertStatus(200);
+        $response->assertViewIs('checkout.show');
 
-        $response->assertRedirect('/dashboard');
-        $response->assertSessionHas('success', 'Pembayaran berhasil didelegasikan. Selamat belajar!');
+        $transaction = Transaction::where('user_id', $user->id)->first();
+        $this->assertNotNull($transaction);
+
+        $bypassResponse = $this->actingAs($user)->post('/checkout/' . $course->id . '/bypass', [
+            'order_id' => $transaction->order_id
+        ]);
+
+        $bypassResponse->assertRedirect('/dashboard');
+        $bypassResponse->assertSessionHas('success', '✅ Pembayaran disimulasikan berhasil! Selamat belajar.');
 
         $this->assertDatabaseHas('transactions', [
             'user_id' => $user->id,
@@ -430,8 +439,16 @@ class TransactionEnrollmentTest extends TestCase
         ]);
 
         $response = $this->actingAs($user)->post('/checkout/' . $course->id);
+        $response->assertStatus(200);
 
-        $response->assertRedirect('/assessments/tes-asesmen/take');
-        $response->assertSessionHas('success', 'Mode Tes: Pembayaran berhasil dilewati. Selamat mengerjakan asesmen!');
+        $transaction = Transaction::where('user_id', $user->id)->first();
+        $this->assertNotNull($transaction);
+
+        $bypassResponse = $this->actingAs($user)->post('/checkout/' . $course->id . '/bypass', [
+            'order_id' => $transaction->order_id
+        ]);
+
+        $bypassResponse->assertRedirect('/assessments/tes-asesmen/take');
+        $bypassResponse->assertSessionHas('success', '✅ Pembayaran disimulasikan berhasil! Selamat mengerjakan asesmen.');
     }
 }

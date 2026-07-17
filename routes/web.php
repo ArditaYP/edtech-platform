@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [StudentDashboardController::class, 'index'])->name('student.dashboard');
     Route::post('/checkout/simulate-success', [CheckoutController::class, 'simulateSuccess'])->name('checkout.simulate-success');
     Route::post('/checkout/{course}', [CheckoutController::class, 'process'])->name('checkout.process');
+    Route::post('/checkout/{course}/bypass', [CheckoutController::class, 'processBypass'])->name('checkout.process-bypass');
     
     // Psychology Assessment Routes
     Route::prefix('assessments/{course:slug}')->group(function () {
