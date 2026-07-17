@@ -193,9 +193,9 @@
                         <!-- Chart (left 48%) -->
                         <td width="48%" valign="middle" align="center" style="padding-right: 6px;">
                             @if($radarChartBase64)
-                                <img src="{{ $radarChartBase64 }}" width="155" style="display: block; margin: 0 auto;">
+                                <img src="{{ $radarChartBase64 }}" width="180" style="display: block; margin: 0 auto;">
                             @else
-                                <div style="width: 155px; height: 140px; border: 1px dashed #CBD5E1; line-height: 140px; color: #94A3B8; font-size: 7pt; text-align: center;">
+                                <div style="width: 180px; height: 140px; border: 1px dashed #CBD5E1; line-height: 140px; color: #94A3B8; font-size: 7pt; text-align: center;">
                                     Grafik Radar Tidak Tersedia
                                 </div>
                             @endif

@@ -540,8 +540,8 @@ class AssessmentController extends Controller
                         'display' => false
                     ],
                     'pointLabels' => [
-                        'fontSize' => 10,
-                        'fontColor' => '#0F172A',
+                        'fontSize' => 9,
+                        'fontColor' => '#1E293B',
                         'fontStyle' => 'bold'
                     ],
                     'gridLines' => [
@@ -557,6 +557,6 @@ class AssessmentController extends Controller
             ]
         ];
 
-        return 'https://quickchart.io/chart?c=' . urlencode(json_encode($chartConfig)) . '&w=220&h=200';
+        return 'https://quickchart.io/chart?c=' . urlencode(json_encode($chartConfig)) . '&w=380&h=280';
     }
 }
