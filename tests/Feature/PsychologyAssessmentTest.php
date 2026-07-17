@@ -27,16 +27,27 @@ class PsychologyAssessmentTest extends TestCase
         // Assert 50 questions are seeded
         $this->assertCount(50, $course->questions);
 
-        // Assert each question has 4 options
+        $professions = [
+            'dokter_medis',
+            'guru_pendidik',
+            'software_engineer',
+            'hr_talent',
+            'konselor_psikolog',
+            'financial_analyst',
+            'arsitek_desainer',
+            'entrepreneur',
+            'legal_lawyer',
+            'digital_marketer',
+            'content_creator',
+            'data_scientist'
+        ];
+
+        // Assert each question has 4 options and they map to the 12 professions
         foreach ($course->questions as $question) {
             $this->assertCount(4, $question->options);
-
-            // Assert categories are correctly mapped
-            $categories = $question->options->pluck('category_result')->toArray();
-            $this->assertContains('konselor', $categories);
-            $this->assertContains('hr', $categories);
-            $this->assertContains('ux_researcher', $categories);
-            $this->assertContains('trainer', $categories);
+            foreach ($question->options as $option) {
+                $this->assertContains($option->category_result, $professions);
+            }
         }
     }
 
@@ -70,16 +81,10 @@ class PsychologyAssessmentTest extends TestCase
         $response->assertStatus(200);
         $response->assertViewIs('assessments.take');
 
-        // Prepare mock answers (let's pick Options that map to categories: 30 HR, 20 Trainer)
+        // Prepare mock answers (pick the first option for all questions to get Dokter & Medis top)
         $answers = [];
-        foreach ($course->questions as $index => $question) {
-            if ($index < 30) {
-                // Option corresponding to 'hr'
-                $option = $question->options->where('category_result', 'hr')->first();
-            } else {
-                // Option corresponding to 'trainer'
-                $option = $question->options->where('category_result', 'trainer')->first();
-            }
+        foreach ($course->questions as $question) {
+            $option = $question->options->first();
             $answers[$question->id] = $option->id;
         }
 
@@ -93,16 +98,16 @@ class PsychologyAssessmentTest extends TestCase
         $this->assertDatabaseHas('assessment_results', [
             'user_id' => $user->id,
             'course_id' => $course->id,
-            'top_category' => 'hr',
+            'top_category' => 'dokter_medis',
         ]);
 
         // View result page
         $resultResponse = $this->actingAs($user)->get("/assessments/{$course->slug}/result");
         $resultResponse->assertStatus(200);
         $resultResponse->assertViewIs('assessments.result');
-        $resultResponse->assertSee('HR & Talent Acquisition Specialist');
-        $resultResponse->assertSee('60%');
-        $resultResponse->assertSee('40%');
+        $resultResponse->assertSee('Dokter & Tenaga Medis');
+        $resultResponse->assertSee('34%');
+        $resultResponse->assertSee('32%');
     }
 
     public function test_enrolled_user_can_download_pdf_report(): void
@@ -122,21 +127,21 @@ class PsychologyAssessmentTest extends TestCase
         \App\Models\AssessmentResult::create([
             'user_id' => $user->id,
             'course_id' => $course->id,
-            'top_category' => 'hr',
+            'top_category' => 'hr_talent',
             'answers_payload' => [
                 [
                     'question_id' => 1,
                     'question_text' => 'Q1',
                     'selected_option_id' => 1,
                     'selected_option_text' => 'O1',
-                    'category' => 'hr'
+                    'category' => 'hr_talent'
                 ]
             ],
             'percentages_payload' => [
-                'hr' => 100,
-                'konselor' => 0,
-                'ux_researcher' => 0,
-                'trainer' => 0
+                'hr_talent' => 100,
+                'dokter_medis' => 0,
+                'guru_pendidik' => 0,
+                'software_engineer' => 0
             ]
         ]);
 

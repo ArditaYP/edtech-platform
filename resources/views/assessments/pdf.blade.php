@@ -164,17 +164,8 @@
                 </div>
                 
                 <div class="quote-box">
-                    @php
-                        $quotes = [
-                            'hr' => 'Kepemimpinan bukan tentang berada di atas, melainkan tentang menumbuhkan potensi terbaik dari orang-orang di sekitar Anda.',
-                            'konselor' => 'Empati adalah pintu gerbang untuk memahami dinamika terdalam manusia di tempat kerja.',
-                            'ux_researcher' => 'Data memberi tahu kita APA yang terjadi, tetapi pemahaman perilaku memberi tahu kita MENGAPA itu terjadi.',
-                            'trainer' => 'Mengajar orang lain adalah investasi terbaik untuk masa depan organisasi.'
-                        ];
-                        $activeQuote = $quotes[$result->top_category] ?? $quotes['hr'];
-                    @endphp
                     <div class="quote-text">
-                        "{{ $activeQuote }}"
+                        "{{ $top['quote'] ?? 'Satu-satunya kegagalan dalam hidup adalah ketika Anda berhenti mencoba belajar.' }}"
                     </div>
                 </div>
             </td>
@@ -210,30 +201,25 @@
                         </td>
                         <!-- Legends (right 52%) -->
                         <td width="52%" valign="top" style="padding-left: 6px;">
-                            <div style="font-size: 7pt; font-weight: bold; color: #0B132B; margin-bottom: 2px; text-transform: uppercase;">
-                                Skor Dimensi Kepribadian
+                            <div style="font-size: 7pt; font-weight: bold; color: #0B132B; margin-bottom: 3px; text-transform: uppercase;">
+                                Distribusi Persentase Kecocokan
                             </div>
                             <table width="100%" cellpadding="0" cellspacing="0" class="score-row" style="border-collapse: collapse;">
                                 @php
-                                    $dimDetails = [
-                                        'Security' => ['color' => '#10B981', 'desc' => 'Kestabilan, kepatuhan SOP & regulasi.'],
-                                        'Contribution' => ['color' => '#3B82F6', 'desc' => 'Manajemen staf & kepemimpinan.'],
-                                        'Growth' => ['color' => '#F59E0B', 'desc' => 'Riset kognitif & analisis data.'],
-                                        'Significance' => ['color' => '#8B5CF6', 'desc' => 'Public speaking & pengajaran.'],
-                                        'Connection' => ['color' => '#EC4899', 'desc' => 'Dukungan emosional & empati tim.']
-                                    ];
+                                    $progressColors = ['#D97706', '#3B82F6', '#10B981', '#8B5CF6'];
                                 @endphp
-                                @foreach($scores as $dim => $score)
+                                @foreach($topCareers as $idx => $career)
                                     <tr>
-                                        <td style="font-weight: bold; color: #334155; width: 33%;">
-                                            <span style="display: inline-block; width: 4px; height: 4px; background-color: {{ $dimDetails[$dim]['color'] }}; border-radius: 50%; margin-right: 2px; vertical-align: middle;"></span>
-                                            {{ $dim }}
+                                        <td style="font-weight: bold; color: #334155; width: 45%; font-size: 6.8pt; padding: 3px 0;">
+                                            {{ $career['label'] }}
                                         </td>
-                                        <td style="color: #64748B; font-size: 6.8pt; width: 52%;">
-                                            {{ $dimDetails[$dim]['desc'] }}
+                                        <td style="width: 40%; vertical-align: middle; padding: 0 4px;">
+                                            <div style="background-color: #E2E8F0; border-radius: 3px; height: 6px; width: 100%;">
+                                                <div style="background-color: {{ $progressColors[$idx] ?? '#64748B' }}; border-radius: 3px; height: 6px; width: {{ $career['score'] }}%;"></div>
+                                            </div>
                                         </td>
-                                        <td style="font-weight: bold; text-align: right; color: #0F172A; width: 15%;">
-                                            {{ $score }}
+                                        <td style="font-weight: bold; text-align: right; color: #0F172A; width: 15%; font-size: 7pt; padding: 3px 0;">
+                                            {{ number_format($career['score'], 0) }}%
                                         </td>
                                     </tr>
                                 @endforeach
@@ -247,37 +233,24 @@
                 <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; font-size: 7.2pt; width: 100%;">
                     <thead>
                         <tr style="background-color: #F8FAFC; border-bottom: 1.5px solid #E2E8F0;">
-                            <th align="left" style="padding: 3px; font-weight: bold; color: #475569; width: 22%;">Dimensi</th>
-                            <th align="left" style="padding: 3px; font-weight: bold; color: #475569; width: 53%;">Interpretasi Skor</th>
-                            <th align="left" style="padding: 3px; font-weight: bold; color: #475569; width: 25%;">Rekomendasi Kekuatan</th>
+                            <th align="left" style="padding: 3px; font-weight: bold; color: #475569; width: 25%;">Profesi Teratas</th>
+                            <th align="left" style="padding: 3px; font-weight: bold; color: #475569; width: 50%;">Deskripsi Karakter &amp; Orientasi</th>
+                            <th align="left" style="padding: 3px; font-weight: bold; color: #475569; width: 25%;">Kekuatan Utama</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="border-bottom: 1px solid #F1F5F9;">
-                            <td style="padding: 3px; font-weight: bold; color: #0B132B;">Security</td>
-                            <td style="padding: 3px; color: #475569; font-size: 6.8pt;">Mencerminkan kebutuhan stabilitas regulasi, minim risiko, dan konsistensi kerja.</td>
-                            <td style="padding: 3px; font-weight: 600; color: #10B981;">Patuh SOP &amp; Presisi</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #F1F5F9;">
-                            <td style="padding: 3px; font-weight: bold; color: #0B132B;">Contribution</td>
-                            <td style="padding: 3px; color: #475569; font-size: 6.8pt;">Mencerminkan dorongan memimpin tim, pembagian staf, dan keputusan taktis.</td>
-                            <td style="padding: 3px; font-weight: 600; color: #3B82F6;">Manajerial &amp; Delegasi</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #F1F5F9;">
-                            <td style="padding: 3px; font-weight: bold; color: #0B132B;">Growth</td>
-                            <td style="padding: 3px; color: #475569; font-size: 6.8pt;">Mencerminkan minat riset ilmiah, data kognitif, dan analisis alur sistem.</td>
-                            <td style="padding: 3px; font-weight: 600; color: #F59E0B;">Riset &amp; Analisis Logis</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #F1F5F9;">
-                            <td style="padding: 3px; font-weight: bold; color: #0B132B;">Significance</td>
-                            <td style="padding: 3px; color: #475569; font-size: 6.8pt;">Mencerminkan minat menyebarkan wawasan, public speaking, dan memandu forum.</td>
-                            <td style="padding: 3px; font-weight: 600; color: #8B5CF6;">Public Speaking &amp; Training</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #F1F5F9;">
-                            <td style="padding: 3px; font-weight: bold; color: #0B132B;">Connection</td>
-                            <td style="padding: 3px; color: #475569; font-size: 6.8pt;">Mencerminkan kepedulian sosial, kemampuan konseling, dan mediasi konflik tim.</td>
-                            <td style="padding: 3px; font-weight: 600; color: #EC4899;">Empati &amp; Konseling</td>
-                        </tr>
+                        @foreach($topCareers as $career)
+                            @php
+                                $detail = $categoryDetails[$career['key']] ?? [];
+                                $shortTitle = str_replace(['THE ', '™'], '', $detail['title'] ?? $career['label']);
+                                $shortTitle = explode('&', $shortTitle)[0];
+                            @endphp
+                            <tr style="border-bottom: 1px solid #F1F5F9;">
+                                <td style="padding: 3px; font-weight: bold; color: #0B132B;">{{ $career['label'] }}</td>
+                                <td style="padding: 3px; color: #475569; font-size: 6.8pt; line-height: 1.2;">{{ $detail['desc'] ?? '' }}</td>
+                                <td style="padding: 3px; font-weight: 600; color: #D97706;">{{ trim($shortTitle) }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
                 

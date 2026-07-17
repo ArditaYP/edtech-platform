@@ -23,7 +23,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('question_id')->constrained()->onDelete('cascade');
             $table->string('option_text');
-            $table->enum('category_result', ['konselor', 'hr', 'ux_researcher', 'trainer']);
+            $table->string('category_result');
             $table->timestamps();
         });
 

@@ -49,461 +49,475 @@ class PsychologySeeder extends Seeder
         $course->questions()->delete();
 
         // 3. Define 50 realistic psychology questions and option mappings
-        // A -> 'konselor', B -> 'hr', C -> 'ux_researcher', D -> 'trainer'
         $questionsData = [
             [
                 'question_text' => 'Bagaimana Anda merespons jika melihat rekan satu tim mengalami burnout?',
                 'options' => [
-                    ['option_text' => 'Mengajaknya mengobrol secara personal untuk mendengarkan keluh kesahnya.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Mengatur ulang pembagian tugas tim agar beban kerjanya berkurang secara terstruktur.', 'category_result' => 'hr'],
-                    ['option_text' => 'Menganalisis penyebab utama burnout tersebut dengan meninjau proses kerja.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Memberikan sesi sharing motivasi dan teknik mengelola stres kepada seluruh tim.', 'category_result' => 'trainer']
+                    ['option_text' => 'Mengajaknya mengobrol secara personal untuk mendengarkan keluh kesahnya.'],
+                    ['option_text' => 'Mengatur ulang pembagian tugas tim agar beban kerjanya berkurang secara terstruktur.'],
+                    ['option_text' => 'Menganalisis penyebab utama burnout tersebut dengan meninjau proses kerja.'],
+                    ['option_text' => 'Memberikan sesi sharing motivasi dan teknik mengelola stres kepada seluruh tim.']
                 ]
             ],
             [
                 'question_text' => 'Ketika harus menyampaikan umpan balik (feedback) negatif kepada bawahan, apa pendekatan Anda?',
                 'options' => [
-                    ['option_text' => 'Menyampaikannya dengan sangat hati-hati agar tidak menyinggung perasaan dan tetap mendukung mentalnya.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Mengacu pada metrik kinerja objektif dan mendiskusikan rencana perbaikan karier formal.', 'category_result' => 'hr'],
-                    ['option_text' => 'Menggali alasan di balik perilakunya dengan mengajukan pertanyaan mendalam tentang hambatan kerjanya.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Membimbingnya secara langsung dengan mencontohkan tindakan yang benar dan memberikan modul latihan.', 'category_result' => 'trainer']
+                    ['option_text' => 'Menyampaikannya dengan sangat hati-hati agar tidak menyinggung perasaan dan tetap mendukung mentalnya.'],
+                    ['option_text' => 'Mengacu pada metrik kinerja objektif dan mendiskusikan rencana perbaikan karier formal.'],
+                    ['option_text' => 'Menggali alasan di balik perilakunya dengan mengajukan pertanyaan mendalam tentang hambatan kerjanya.'],
+                    ['option_text' => 'Membimbingnya secara langsung dengan mencontohkan tindakan yang benar dan memberikan modul latihan.']
                 ]
             ],
             [
                 'question_text' => 'Dalam menghadapi konflik antara dua anggota tim yang berselisih paham, Anda akan...',
                 'options' => [
-                    ['option_text' => 'Menjadi mediator yang netral untuk meredakan ketegangan emosional di antara mereka.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Menyelesaikan konflik berdasarkan aturan/SOP perusahaan yang berlaku adil bagi kedua pihak.', 'category_result' => 'hr'],
-                    ['option_text' => 'Mencari tahu akar permasalahan dengan mewawancarai pihak-pihak terkait secara objektif.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Mengadakan sesi diskusi interaktif untuk menemukan jalan tengah yang disepakati bersama.', 'category_result' => 'trainer']
+                    ['option_text' => 'Menjadi mediator yang netral untuk meredakan ketegangan emosional di antara mereka.'],
+                    ['option_text' => 'Menyelesaikan konflik berdasarkan aturan/SOP perusahaan yang berlaku adil bagi kedua pihak.'],
+                    ['option_text' => 'Mencari tahu akar permasalahan dengan mewawancarai pihak-pihak terkait secara objektif.'],
+                    ['option_text' => 'Mengadakan sesi diskusi interaktif untuk menemukan jalan tengah yang disepakati bersama.']
                 ]
             ],
             [
                 'question_text' => 'Apa prioritas utama Anda saat menyusun rencana pelatihan (training) tahunan?',
                 'options' => [
-                    ['option_text' => 'Membantu memulihkan motivasi internal dan kesejahteraan psikologis karyawan.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Menyelaraskan modul pelatihan dengan visi strategis dan KPI organisasi.', 'category_result' => 'hr'],
-                    ['option_text' => 'Melakukan survei kebutuhan pelatihan berbasis data perilaku dan kompetensi.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Merancang metode penyampaian materi yang interaktif, seru, dan mudah dipahami.', 'category_result' => 'trainer']
+                    ['option_text' => 'Membantu memulihkan motivasi internal dan kesejahteraan psikologis karyawan.'],
+                    ['option_text' => 'Menyelaraskan modul pelatihan dengan visi strategis dan KPI organisasi.'],
+                    ['option_text' => 'Melakukan survei kebutuhan pelatihan berbasis data perilaku dan kompetensi.'],
+                    ['option_text' => 'Merancang metode penyampaian materi yang interaktif, seru, dan mudah dipahami.']
                 ]
             ],
             [
                 'question_text' => 'Jika ditunjuk memimpin proyek baru, langkah pertama yang Anda lakukan adalah...',
                 'options' => [
-                    ['option_text' => 'Memastikan setiap anggota tim merasa nyaman dan saling terkoneksi satu sama lain.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Menetapkan peran, tanggung jawab, dan target performa yang jelas bagi setiap orang.', 'category_result' => 'hr'],
-                    ['option_text' => 'Melakukan riset komparatif dan mengumpulkan data sebelum memutuskan metode kerja.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Mempersiapkan presentasi kick-off yang menginspirasi untuk membakar semangat tim.', 'category_result' => 'trainer']
+                    ['option_text' => 'Memastikan setiap anggota tim merasa nyaman dan saling terkoneksi satu sama lain.'],
+                    ['option_text' => 'Menetapkan peran, tanggung jawab, dan target performa yang jelas bagi setiap orang.'],
+                    ['option_text' => 'Melakukan riset komparatif dan mengumpulkan data sebelum memutuskan metode kerja.'],
+                    ['option_text' => 'Mempersiapkan presentasi kick-off yang menginspirasi untuk membakar semangat tim.']
                 ]
             ],
             [
                 'question_text' => 'Bagaimana cara Anda mengevaluasi efektivitas suatu sistem kerja baru?',
                 'options' => [
-                    ['option_text' => 'Menanyakan kepada staf apakah sistem baru tersebut membuat mereka stres atau tidak.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Mengukur metrik retensi staf dan efisiensi biaya operasional setelah implementasi.', 'category_result' => 'hr'],
-                    ['option_text' => 'Menguji kegunaan (usability) sistem secara langsung lewat observasi perilaku pengguna.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Menyelenggarakan workshop evaluasi untuk melatih staf memaksimalkan sistem tersebut.', 'category_result' => 'trainer']
+                    ['option_text' => 'Menanyakan kepada staf apakah sistem baru tersebut membuat mereka stres atau tidak.'],
+                    ['option_text' => 'Mengukur metrik retensi staf dan efisiensi biaya operasional setelah implementasi.'],
+                    ['option_text' => 'Menguji kegunaan (usability) sistem secara langsung lewat observasi perilaku pengguna.'],
+                    ['option_text' => 'Menyelenggarakan workshop evaluasi untuk melatih staf memaksimalkan sistem tersebut.']
                 ]
             ],
             [
                 'question_text' => 'Topik bacaan apa yang paling menarik perhatian Anda di perpustakaan?',
                 'options' => [
-                    ['option_text' => 'Buku tentang psikoterapi, empati, dan cara memahami luka batin.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Buku tentang strategi manajemen SDM, kepatuhan hukum kerja, dan rekrutmen.', 'category_result' => 'hr'],
-                    ['option_text' => 'Jurnal ilmiah tentang analisis data kognitif dan metode riset perilaku manusia.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Buku tentang teknik public speaking, kepemimpinan transformasional, dan coaching.', 'category_result' => 'trainer']
+                    ['option_text' => 'Buku tentang psikoterapi, empati, dan cara memahami luka batin.'],
+                    ['option_text' => 'Buku tentang strategi manajemen SDM, kepatuhan hukum kerja, dan rekrutmen.'],
+                    ['option_text' => 'Jurnal ilmiah tentang analisis data kognitif dan metode riset perilaku manusia.'],
+                    ['option_text' => 'Buku tentang teknik public speaking, kepemimpinan transformasional, dan coaching.']
                 ]
             ],
             [
                 'question_text' => 'Saat melihat alur kerja (workflow) yang tidak efisien, Anda cenderung...',
                 'options' => [
-                    ['option_text' => 'Mendengarkan keluhan rekan kerja tentang frustrasi yang mereka rasakan akibat alur tersebut.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Merumuskan kebijakan baru untuk menata ulang pembagian wewenang dalam tim.', 'category_result' => 'hr'],
-                    ['option_text' => 'Memetakan langkah demi langkah alur kerja tersebut untuk mengidentifikasi bottleneck.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Membuat materi sosialisasi yang menarik untuk menjelaskan cara kerja yang lebih cepat.', 'category_result' => 'trainer']
+                    ['option_text' => 'Mendengarkan keluhan rekan kerja tentang frustrasi yang mereka rasakan akibat alur tersebut.'],
+                    ['option_text' => 'Merumuskan kebijakan baru untuk menata ulang pembagian wewenang dalam tim.'],
+                    ['option_text' => 'Memetakan langkah demi langkah alur kerja tersebut untuk mengidentifikasi bottleneck.'],
+                    ['option_text' => 'Membuat materi sosialisasi yang menarik untuk menjelaskan cara kerja yang lebih cepat.']
                 ]
             ],
             [
                 'question_text' => 'Ketika rekan kerja melakukan kesalahan fatal yang menghambat proyek, reaksi Anda adalah...',
                 'options' => [
-                    ['option_text' => 'Menenangkan dirinya terlebih dahulu agar tidak merasa bersalah secara berlebihan.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Melaporkan kejadian tersebut sesuai prosedur dan mendiskusikan sanksi atau evaluasi formal.', 'category_result' => 'hr'],
-                    ['option_text' => 'Mengkaji sistem penempatan kerja untuk mengetahui apakah ia ditempatkan di posisi yang salah.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Mengadakan sesi mentoring khusus untuk mengajarinya cara memperbaiki kesalahan tersebut.', 'category_result' => 'trainer']
+                    ['option_text' => 'Menenangkan dirinya terlebih dahulu agar tidak merasa bersalah secara berlebihan.'],
+                    ['option_text' => 'Melaporkan kejadian tersebut sesuai prosedur dan mendiskusikan sanksi atau evaluasi formal.'],
+                    ['option_text' => 'Mengkaji sistem penempatan kerja untuk mengetahui apakah ia ditempatkan di posisi yang salah.'],
+                    ['option_text' => 'Mengadaan sesi mentoring khusus untuk mengajarinya cara memperbaiki kesalahan tersebut.']
                 ]
             ],
             [
                 'question_text' => 'Bagaimana Anda mendeskripsikan peran ideal Anda dalam sebuah organisasi?',
                 'options' => [
-                    ['option_text' => 'Menjadi pendengar setia dan penyembuh suasana kerja bagi siapa saja yang membutuhkan.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Menjadi pengambil keputusan yang adil dalam penataan staf dan kebijakan karir.', 'category_result' => 'hr'],
-                    ['option_text' => 'Menjadi analis yang memecahkan masalah kompleks lewat data riset yang valid.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Menjadi komunikator yang menginspirasi dan melatih orang lain agar berkembang.', 'category_result' => 'trainer']
+                    ['option_text' => 'Menjadi pendengar setia dan penyembuh suasana kerja bagi siapa saja yang membutuhkan.'],
+                    ['option_text' => 'Menjadi pengambil keputusan yang adil dalam penataan staf dan kebijakan karir.'],
+                    ['option_text' => 'Menjadi analis yang memecahkan masalah kompleks lewat data riset yang valid.'],
+                    ['option_text' => 'Menjadi komunikator yang menginspirasi dan melatih orang lain agar berkembang.']
                 ]
             ],
             [
                 'question_text' => 'Apa yang Anda lakukan ketika ada perubahan regulasi mendadak dari manajemen puncak?',
                 'options' => [
-                    ['option_text' => 'Membantu menenangkan kecemasan rekan kerja agar tidak panik menghadapi perubahan.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Segera memperbarui draf kebijakan operasional agar tetap patuh pada regulasi baru.', 'category_result' => 'hr'],
-                    ['option_text' => 'Menganalisis dampak regulasi tersebut terhadap perilaku produktivitas harian karyawan.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Menyusun presentasi penjelasan regulasi baru tersebut agar mudah dipahami semua orang.', 'category_result' => 'trainer']
+                    ['option_text' => 'Membantu menenangkan kecemasan rekan kerja agar tidak panik menghadapi perubahan.'],
+                    ['option_text' => 'Segera memperbarui draf kebijakan operasional agar tetap patuh pada regulasi baru.'],
+                    ['option_text' => 'Menganalisis dampak regulasi tersebut terhadap perilaku produktivitas harian karyawan.'],
+                    ['option_text' => 'Menyusun presentasi penjelasan regulasi baru tersebut agar mudah dipahami semua orang.']
                 ]
             ],
             [
                 'question_text' => 'Ketika Anda mengadakan sesi wawancara, apa yang paling Anda fokuskan?',
                 'options' => [
-                    ['option_text' => 'Membangun kenyamanan emosional agar calon karyawan bisa terbuka tentang dirinya.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Mencocokkan kualifikasi calon karyawan dengan kebutuhan kompetensi organisasi.', 'category_result' => 'hr'],
-                    ['option_text' => 'Mengamati detail mikro-ekspresi dan pola pikir logis dari jawaban mereka.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Memberikan gambaran inspiratif tentang visi perusahaan dan memotivasi mereka untuk bergabung.', 'category_result' => 'trainer']
+                    ['option_text' => 'Membangun kenyamanan emosional agar calon karyawan bisa terbuka tentang dirinya.'],
+                    ['option_text' => 'Mencocokkan kualifikasi calon karyawan dengan kebutuhan kompetensi organisasi.'],
+                    ['option_text' => 'Mengamati detail mikro-ekspresi dan pola pikir logis dari jawaban mereka.'],
+                    ['option_text' => 'Memberikan gambaran inspiratif tentang visi perusahaan dan memotivasi mereka untuk bergabung.']
                 ]
             ],
             [
                 'question_text' => 'Bagaimana cara Anda meningkatkan retensi (kebertahanan) karyawan di kantor?',
                 'options' => [
-                    ['option_text' => 'Meningkatkan program konseling internal dan kesejahteraan mental karyawan.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Merancang jenjang karir yang jelas dan sistem reward yang kompetitif.', 'category_result' => 'hr'],
-                    ['option_text' => 'Melakukan survei kepuasan kerja berkala untuk menemukan faktor penyebab resign.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Menyediakan program pelatihan keterampilan berkelanjutan yang menarik minat mereka.', 'category_result' => 'trainer']
+                    ['option_text' => 'Meningkatkan program konseling internal dan kesejahteraan mental karyawan.'],
+                    ['option_text' => 'Merancang jenjang karir yang jelas dan sistem reward yang kompetitif.'],
+                    ['option_text' => 'Melakukan survei kepuasan kerja berkala untuk menemukan faktor penyebab resign.'],
+                    ['option_text' => 'Menyediakan program pelatihan keterampilan berkelanjutan yang menarik minat mereka.']
                 ]
             ],
             [
                 'question_text' => 'Saat menyusun laporan hasil kerja akhir tahun, Anda lebih suka menyajikannya dengan...',
                 'options' => [
-                    ['option_text' => 'Menyisipkan testimoni perasaan dan tingkat kepuasan tim selama bekerja.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Menyajikan matriks pencapaian KPI individu dan efektivitas organisasi.', 'category_result' => 'hr'],
-                    ['option_text' => 'Menggunakan grafik analitis mendalam dan visualisasi data yang presisi.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Menyampaikan poin-poin penting secara lisan dengan presentasi yang memukau.', 'category_result' => 'trainer']
+                    ['option_text' => 'Menyisipkan testimoni perasaan dan tingkat kepuasan tim selama bekerja.'],
+                    ['option_text' => 'Menyajikan matriks pencapaian KPI individu dan efektivitas organisasi.'],
+                    ['option_text' => 'Menggunakan grafik analitis mendalam dan visualisasi data yang presisi.'],
+                    ['option_text' => 'Menyampaikan poin-poin penting secara lisan dengan presentasi yang memukau.']
                 ]
             ],
             [
                 'question_text' => 'Ketika berdiskusi dalam kelompok kecil, kontribusi utama Anda biasanya berupa...',
                 'options' => [
-                    ['option_text' => 'Memastikan semua anggota merasa didengar dan dihargai pendapatnya.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Mengarahkan diskusi agar tetap fokus pada tujuan dan waktu yang disepakati.', 'category_result' => 'hr'],
-                    ['option_text' => 'Mempertanyakan asumsi awal dengan menyodorkan data atau fakta ilmiah alternatif.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Menyederhanakan ide-ide rumit anggota kelompok menjadi kesimpulan yang menarik.', 'category_result' => 'trainer']
+                    ['option_text' => 'Memastikan semua anggota merasa didengar dan dihargai pendapatnya.'],
+                    ['option_text' => 'Mengarahkan diskusi agar tetap fokus pada tujuan dan waktu yang disepakati.'],
+                    ['option_text' => 'Mempertanyakan asumsi awal dengan menyodorkan data atau fakta ilmiah alternatif.'],
+                    ['option_text' => 'Menyederhanakan ide-ide rumit anggota kelompok menjadi kesimpulan yang menarik.']
                 ]
             ],
             [
                 'question_text' => 'Jika diminta merancang ruang kantor baru, aspek apa yang paling Anda perhatikan?',
                 'options' => [
-                    ['option_text' => 'Menyediakan area khusus relaksasi mental dan pojok curhat yang tenang.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Mengoptimalkan tata letak meja kerja demi kelancaran koordinasi antar divisi.', 'category_result' => 'hr'],
-                    ['option_text' => 'Menganalisis kebiasaan gerak staf saat bekerja untuk efisiensi ruang ergonomis.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Membuat ruang kolaborasi kreatif yang dinamis dan memicu inspirasi diskusi.', 'category_result' => 'trainer']
+                    ['option_text' => 'Menyediakan area khusus relaksasi mental dan pojok curhat yang tenang.'],
+                    ['option_text' => 'Mengoptimalkan tata letak meja kerja demi kelancaran koordinasi antar divisi.'],
+                    ['option_text' => 'Menganalisis kebiasaan gerak staf saat bekerja untuk efisiensi ruang ergonomis.'],
+                    ['option_text' => 'Membuat ruang kolaborasi kreatif yang dinamis dan memicu inspirasi diskusi.']
                 ]
             ],
             [
                 'question_text' => 'Bagaimana pendekatan Anda dalam mengajarkan keterampilan baru yang sulit kepada rekan kerja?',
                 'options' => [
-                    ['option_text' => 'Mendampinginya dengan sabar hingga ia merasa percaya diri untuk mencoba sendiri.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Menjadwalkan sesi mentoring terstruktur sesuai dengan kurikulum kompetensi divisi.', 'category_result' => 'hr'],
-                    ['option_text' => 'Memecah keterampilan tersebut menjadi bagian-bagian logis berdasarkan riset kognitif.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Mengadakan workshop interaktif penuh praktik langsung dengan metode yang seru.', 'category_result' => 'trainer']
+                    ['option_text' => 'Mendampingi proses belajarnya dengan sabar dan memberikan dorongan moral yang konstan.'],
+                    ['option_text' => 'Menyediakan manual pelatihan terstruktur dengan indikator keberhasilan yang jelas.'],
+                    ['option_text' => 'Memecah keterampilan tersebut menjadi bagian-bagian logis berdasarkan riset efektivitas.'],
+                    ['option_text' => 'Mengadakan simulasi interaktif yang menarik agar ia bisa mempraktikkannya langsung.']
                 ]
             ],
             [
-                'question_text' => 'Saat rekan satu tim terlihat tidak bersemangat karena masalah pribadi, Anda akan...',
+                'question_text' => 'Saat menghadapi proyek dengan tenggat waktu sangat ketat, fokus Anda adalah...',
                 'options' => [
-                    ['option_text' => 'Mengajaknya minum kopi bersama untuk mendengarkan curahan hatinya secara privat.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Mengingatkannya secara profesional tentang batasan performa kerja yang harus dijaga.', 'category_result' => 'hr'],
-                    ['option_text' => 'Mengamati apakah masalah pribadinya memengaruhi fokus kognitifnya saat bekerja.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Memberikan kata-kata motivasi atau video inspiratif untuk menaikkan mood kerjanya.', 'category_result' => 'trainer']
+                    ['option_text' => 'Menjaga keharmonisan dan level stres anggota tim agar tidak ada yang kelelahan.'],
+                    ['option_text' => 'Membagi tugas berdasarkan spesialisasi masing-masing dan memantau progres harian.'],
+                    ['option_text' => 'Mengkaji ulang metode kerja untuk menemukan cara tercepat secara ilmiah.'],
+                    ['option_text' => 'Mengumpulkan tim secara berkala untuk menyuntikkan semangat kerja baru.']
                 ]
             ],
             [
-                'question_text' => 'Apa langkah Anda ketika proses rekrutmen karyawan baru dirasa terlalu lama?',
+                'question_text' => 'Ketika mengamati performa kerja bawahan yang menurun drastis, tindakan pertama Anda adalah...',
                 'options' => [
-                    ['option_text' => 'Memastikan pelamar tidak merasa terabaikan dengan mengirim pesan personal yang ramah.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Mengevaluasi alur koordinasi antar manajer untuk mempercepat persetujuan berkas.', 'category_result' => 'hr'],
-                    ['option_text' => 'Melakukan audit komprehensif pada setiap tahapan seleksi untuk membuang langkah sia-sia.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Melatih tim HR agar lebih terampil dalam melakukan teknik screening cepat.', 'category_result' => 'trainer']
+                    ['option_text' => 'Mengajaknya makan siang bersama untuk menanyakan apakah ia sedang memiliki masalah keluarga.'],
+                    ['option_text' => 'Melakukan tinjauan KPI formal dan membuat rencana pembinaan karir terstruktur.'],
+                    ['option_text' => 'Mengamati interaksinya dengan sistem kerja baru untuk mencari akar masalah teknis.'],
+                    ['option_text' => 'Memberikannya sesi coaching pribadi untuk membangkitkan kembali visi kerjanya.']
                 ]
             ],
             [
-                'question_text' => 'Ketika meluncurkan program kesejahteraan karyawan (employee wellness program), fokus Anda adalah...',
+                'question_text' => 'Topik diskusi apa yang paling membuat Anda bersemangat saat menghadiri seminar?',
                 'options' => [
-                    ['option_text' => 'Menyediakan layanan psikolog klinis gratis untuk mengatasi masalah kesehatan mental.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Menyelaraskan program tersebut dengan anggaran perusahaan agar bernilai investasi tinggi.', 'category_result' => 'hr'],
-                    ['option_text' => 'Melakukan riset pasar internal untuk mengetahui kebutuhan paling mendesak dari karyawan.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Mengadakan webinar kesehatan interaktif dengan pembicara terkenal untuk memicu antusiasme.', 'category_result' => 'trainer']
+                    ['option_text' => 'Kesejahteraan mental pekerja dan pentingnya empati di era modern.'],
+                    ['option_text' => 'Peran kecerdasan buatan dalam memetakan efisiensi biaya SDM perusahaan.'],
+                    ['option_text' => 'Metode riset terbaru tentang perilaku konsumen digital di era industri 4.0.'],
+                    ['option_text' => 'Strategi komunikasi publik yang efektif untuk memimpin perubahan organisasi.']
                 ]
             ],
             [
-                'question_text' => 'Dalam merespons kritik pedas dari klien, tindakan pertama Anda adalah...',
+                'question_text' => 'Apa reaksi spontan Anda saat menemukan ada kesalahan data pada laporan yang telah disubmit?',
                 'options' => [
-                    ['option_text' => 'Memvalidasi kekecewaan klien secara emosional agar suasana mendingin.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Meninjau kontrak kerja untuk melihat kewajiban hukum dan batas tanggung jawab kita.', 'category_result' => 'hr'],
-                    ['option_text' => 'Menganalisis detail kesalahan sistem yang dilaporkan klien untuk dicarikan solusinya.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Mengajak klien berdiskusi langsung dalam rapat klarifikasi yang solutif dan edukatif.', 'category_result' => 'trainer']
+                    ['option_text' => 'Menyampaikannya dengan lembut kepada pembuat laporan agar ia tidak terlalu tertekan.'],
+                    ['option_text' => 'Segera menarik laporan tersebut dan mencatatnya sebagai bahan evaluasi sistem kerja.'],
+                    ['option_text' => 'Menganalisis ulang seluruh dataset untuk menemukan letak ketidakkonsistenan angka.'],
+                    ['option_text' => 'Menggunakan kesalahan tersebut sebagai studi kasus menarik untuk sesi pelatihan berikutnya.']
                 ]
             ],
             [
-                'question_text' => 'Bagaimana Anda menyikapi anggota tim yang memiliki gaya belajar lambat?',
+                'question_text' => 'Bagaimana Anda ingin orang lain mengingat Anda di tempat kerja?',
                 'options' => [
-                    ['option_text' => 'Memberikan dukungan moral agar ia tidak merasa minder atau tertekan di tim.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Menyesuaikan target kinerjanya sementara waktu sambil memantau perkembangannya.', 'category_result' => 'hr'],
-                    ['option_text' => 'Meneliti hambatan belajar yang ia alami agar dapat mendesain ulang instruksi tugas.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Membuat rangkuman materi visual atau tutorial video pendek untuk membantunya belajar.', 'category_result' => 'trainer']
+                    ['option_text' => 'Sebagai orang yang selalu peduli, ramah, dan siap membantu masalah emosional siapa saja.'],
+                    ['option_text' => 'Sebagai pemimpin profesional yang adil, disiplin, dan mampu merancang karir staf.'],
+                    ['option_text' => 'Sebagai analis cerdas yang berhasil membongkar akar masalah kompleks melalui data.'],
+                    ['option_text' => 'Sebagai motivator ulung yang berhasil menginspirasi orang lain untuk tumbuh hebat.']
                 ]
             ],
             [
-                'question_text' => 'Saat merancang survei kepuasan pelanggan, Anda lebih mementingkan...',
+                'question_text' => 'Apa kriteria lingkungan kerja ideal yang paling ingin Anda tempati?',
                 'options' => [
-                    ['option_text' => 'Menyediakan kolom terbuka bagi pelanggan untuk mengekspresikan perasaan mereka.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Menyelaraskan hasil kepuasan dengan evaluasi kinerja tim layanan pelanggan.', 'category_result' => 'hr'],
-                    ['option_text' => 'Memastikan instrumen pertanyaan terbebas dari bias kognitif dan mudah dipahami.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Menyebarkan hasil survei tersebut dalam bentuk infografis yang menarik bagi seluruh tim.', 'category_result' => 'trainer']
+                    ['option_text' => 'Suasana kekeluargaan yang erat, minim persaingan, dan saling dukung.'],
+                    ['option_text' => 'Perusahaan besar dengan struktur karir jelas, SOP kokoh, dan stabilitas finansial.'],
+                    ['option_text' => 'Laboratorium riset atau agensi inovatif yang berbasis data empiris.'],
+                    ['option_text' => 'Pusat pelatihan yang dinamis dan dipenuhi oleh sesi diskusi interaktif.']
                 ]
             ],
             [
-                'question_text' => 'Apa yang paling Anda nikmati dari aktivitas kerja kelompok?',
+                'question_text' => 'Saat merancang kuesioner evaluasi program kerja, fokus utama pertanyaan Anda adalah...',
                 'options' => [
-                    ['option_text' => 'Rasa kebersamaan, kehangatan hubungan, dan saling mendukung satu sama lain.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Kejelasan struktur kerja di mana masing-masing anggota tahu persis apa tugasnya.', 'category_result' => 'hr'],
-                    ['option_text' => 'Proses bertukar pikiran yang logis, mendalam, dan menantang asumsi lama.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Kesempatan mempresentasikan hasil diskusi di depan umum dengan penuh percaya diri.', 'category_result' => 'trainer']
+                    ['option_text' => 'Bagaimana perasaan peserta selama mengikuti program tersebut.'],
+                    ['option_text' => 'Apakah program tersebut meningkatkan efisiensi operasional staf secara signifikan.'],
+                    ['option_text' => 'Apakah butir-butir pertanyaan kuesioner memiliki validitas perilaku yang kuat.'],
+                    ['option_text' => 'Bagaimana materi program tersebut bisa disampaikan dengan lebih menarik di masa depan.']
                 ]
             ],
             [
-                'question_text' => 'Ketika Anda ditugaskan memecahkan masalah penurunan kinerja divisi, Anda akan...',
+                'question_text' => 'Bagaimana reaksi Anda saat menghadapi keluhan (complaint) pelanggan yang sangat marah?',
                 'options' => [
-                    ['option_text' => 'Mengadakan sesi konseling kelompok untuk mengurai kelelahan mental kolektif tim.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Mengevaluasi kesesuaian keahlian staf (job-fit) dengan posisi kerja mereka saat ini.', 'category_result' => 'hr'],
-                    ['option_text' => 'Mengumpulkan data aktivitas harian staf untuk mendeteksi inefisiensi operasional.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Membuat modul pelatihan baru untuk meng-upgrade skill praktis anggota divisi tersebut.', 'category_result' => 'trainer']
+                    ['option_text' => 'Mendengarkan keluhannya dengan empati penuh hingga emosinya mereda.'],
+                    ['option_text' => 'Menyelesaikan keluhan tersebut berdasarkan garansi resmi perusahaan.'],
+                    ['option_text' => 'Mencatat detail keluhan untuk menganalisis kelemahan desain sistem produk.'],
+                    ['option_text' => 'Menjelaskan solusi alternatif secara lugas dan mengedukasi cara pencegahannya.']
                 ]
             ],
             [
-                'question_text' => 'Bagaimana cara Anda membujuk manajemen agar menyetujui anggaran proyek baru Anda?',
+                'question_text' => 'Ketika merumuskan visi jangka panjang sebuah organisasi, Anda lebih condong berfokus pada...',
                 'options' => [
-                    ['option_text' => 'Menyampaikan dampak emosional positif proyek tersebut bagi kebahagiaan karyawan.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Menunjukkan analisis laba-rugi (ROI) yang matang serta kontribusinya pada tujuan bisnis.', 'category_result' => 'hr'],
-                    ['option_text' => 'Menyajikan data riset kebutuhan pasar yang akurat dan hasil uji coba berskala kecil.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Melakukan presentasi persuasif yang dinamis dengan visualisasi rencana yang menarik.', 'category_result' => 'trainer']
+                    ['option_text' => 'Membangun budaya organisasi yang ramah kesehatan mental karyawan.'],
+                    ['option_text' => 'Mengembangkan struktur organisasi yang siap ekspansi dan stabil secara finansial.'],
+                    ['option_text' => 'Melakukan riset mendalam tentang arah pergeseran teknologi global.'],
+                    ['option_text' => 'Merancang program pemberdayaan kapasitas SDM secara berkala.']
                 ]
             ],
             [
-                'question_text' => 'Jika Anda melihat adanya ketimpangan gender/latar belakang dalam promosi karir di kantor, Anda akan...',
+                'question_text' => 'Ketika tim Anda mengalami konflik internal yang panas, tindakan taktis pertama Anda adalah...',
                 'options' => [
-                    ['option_text' => 'Menawarkan ruang bercerita bagi karyawan yang merasa dirugikan demi meringankan beban mental.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Mengusulkan pembaruan kebijakan promosi jabatan yang objektif dan bebas diskriminasi.', 'category_result' => 'hr'],
-                    ['option_text' => 'Melakukan analisis statistik data promosi masa lalu untuk membuktikan bias sistematis.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Menyelenggarakan program edukasi keberagaman (diversity training) bagi jajaran manajer.', 'category_result' => 'trainer']
+                    ['option_text' => 'Memanggil setiap pihak secara terpisah untuk memulihkan keharmonisan emosional.'],
+                    ['option_text' => 'Melakukan mediasi berdasarkan kode etik perilaku karyawan perusahaan.'],
+                    ['option_text' => 'Mengumpulkan data objektif tentang penyebab terjadinya konflik secara tidak memihak.'],
+                    ['option_text' => 'Memimpin rapat rekonsiliasi bersama untuk memicu kolaborasi kreatif baru.']
                 ]
             ],
             [
-                'question_text' => 'Ketika Anda merasa jenuh dengan rutinitas kerja harian, apa yang biasanya Anda lakukan?',
+                'question_text' => 'Bagaimana cara Anda menumbuhkan kepercayaan (trust) dari bawahan Anda?',
                 'options' => [
-                    ['option_text' => 'Mengambil cuti untuk melakukan refleksi diri, meditasi, atau menemui konselor pribadi.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Mencari tantangan baru dengan mendaftar rotasi posisi atau proyek antar departemen.', 'category_result' => 'hr'],
-                    ['option_text' => 'Menganalisis faktor apa yang membuat Anda jenuh dan mendesain ulang kebiasaan kerja.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Mengikuti kursus/seminar baru untuk menambah wawasan dan keterampilan di bidang lain.', 'category_result' => 'trainer']
+                    ['option_text' => 'Menjadi pendengar yang aman dan tidak menghakimi kesalahan pribadi mereka.'],
+                    ['option_text' => 'Menunjukkan transparansi penilaian karir dan bersikap adil dalam penugasan.'],
+                    ['option_text' => 'Menunjukkan kompetensi riset Anda yang didukung data ilmiah yang kuat.'],
+                    ['option_text' => 'Menjadi mentor yang secara konsisten membimbing mereka menguasai ilmu baru.']
                 ]
             ],
             [
-                'question_text' => 'Saat membimbing siswa magang, pendekatan utama Anda adalah...',
+                'question_text' => 'Apa yang paling Anda hindari saat memimpin sesi diskusi kelompok?',
                 'options' => [
-                    ['option_text' => 'Memastikan mereka merasa diterima dengan hangat dan tidak merasa canggung di kantor.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Menjelaskan deskripsi pekerjaan secara formal serta mengawasi kedisiplinan kerja mereka.', 'category_result' => 'hr'],
-                    ['option_text' => 'Mengamati metode kerja mereka untuk memahami cara berpikir generasi baru.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Mengajarkan teknik-teknik praktis kerja secara bertahap melalui simulasi tugas nyata.', 'category_result' => 'trainer']
+                    ['option_text' => 'Terjadinya ketegangan emosional yang menyakiti perasaan salah satu anggota.'],
+                    ['option_text' => 'Diskusi yang melantur tanpa menghasilkan kesimpulan taktis yang produktif.'],
+                    ['option_text' => 'Kesimpulan diskusi yang diambil tanpa didasari oleh data pendukung yang kuat.'],
+                    ['option_text' => 'Suasana rapat yang membosankan dan kurang memicu partisipasi aktif peserta.']
                 ]
             ],
             [
-                'question_text' => 'Bagaimana Anda bereaksi terhadap kegagalan besar dari suatu proyek tim?',
+                'question_text' => 'Ketika mengevaluasi calon vendor baru, parameter terpenting bagi Anda adalah...',
                 'options' => [
-                    ['option_text' => 'Menguatkan hati anggota tim agar tidak saling menyalahkan dan tetap bersemangat.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Melakukan audit kegagalan untuk melihat kepatuhan anggota terhadap rencana awal.', 'category_result' => 'hr'],
-                    ['option_text' => 'Menganalisis data kegagalan secara menyeluruh untuk menemukan letak kesalahan teknis.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Mengubah kegagalan tersebut menjadi studi kasus pembelajaran bersama untuk proyek depan.', 'category_result' => 'trainer']
+                    ['option_text' => 'Seberapa baik reputasi kepedulian sosial dan keramahan tim kerja mereka.'],
+                    ['option_text' => 'Kesesuaian legalitas hukum dan stabilitas skala bisnis vendor tersebut.'],
+                    ['option_text' => 'Hasil uji coba teknis dan keandalan data performa layanan mereka.'],
+                    ['option_text' => 'Kemudahan materi penjelasan panduan layanan yang mereka sajikan.']
                 ]
             ],
             [
-                'question_text' => 'Apa fokus Anda saat merancang onboarding program untuk karyawan baru?',
+                'question_text' => 'Jika Anda diminta menulis buku, topik apa yang paling ingin Anda bahas?',
                 'options' => [
-                    ['option_text' => 'Membantu mereka beradaptasi secara psikologis dan merasa diterima di lingkungan baru.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Memperkenalkan regulasi perusahaan, sistem gaji, dan struktur organisasi formal.', 'category_result' => 'hr'],
-                    ['option_text' => 'Melakukan peninjauan apakah proses penyampaian informasi onboarding berjalan efisien.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Memberikan pelatihan singkat yang interaktif mengenai skill dasar harian kantor.', 'category_result' => 'trainer']
+                    ['option_text' => 'Panduan memulihkan kelelahan batin dan membangun ketahanan emosi.'],
+                    ['option_text' => 'Panduan menyusun arsitektur manajemen SDM untuk perusahaan startup.'],
+                    ['option_text' => 'Metodologi melakukan analisis perilaku konsumen berbasis riset UX.'],
+                    ['option_text' => 'Teknik berbicara di depan umum yang mampu memukau ribuan audiens.']
                 ]
             ],
             [
-                'question_text' => 'Jika rekan kerja merasa terintimidasi oleh cara bicara pimpinan yang keras, Anda akan...',
+                'question_text' => 'Apa langkah pertama Anda ketika mendeteksi adanya kemunduran produktivitas pada satu departemen?',
                 'options' => [
-                    ['option_text' => 'Menjadi tempatnya mencurahkan kesedihan dan membantunya memulihkan rasa percaya diri.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Menyarankan pelaporan formal jika tindakan pimpinan sudah mengarah pada pelecehan.', 'category_result' => 'hr'],
-                    ['option_text' => 'Menganalisis pola komunikasi pimpinan tersebut untuk mencari cara interaksi yang efektif.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Memberikan tips praktis atau teknik asertif dalam berkomunikasi dengan atasan galak.', 'category_result' => 'trainer']
+                    ['option_text' => 'Mengadakan sesi konseling kelompok untuk mendengar keluhan suasana kerja mereka.'],
+                    ['option_text' => 'Melakukan audit kepatuhan kerja dan meninjau kembali target KPI manajer terkait.'],
+                    ['option_text' => 'Melakukan riset alur kerja untuk mendeteksi bottleneck sistem operasional.'],
+                    ['option_text' => 'Menyelenggarakan sesi workshop motivasi untuk menyegarkan kembali semangat departemen.']
                 ]
             ],
             [
-                'question_text' => 'Saat Anda menyelenggarakan webinar online, apa indikator utama kesuksesan acara bagi Anda?',
+                'question_text' => 'Ketika memandu karyawan baru yang kesulitan beradaptasi, pendekatan Anda adalah...',
                 'options' => [
-                    ['option_text' => 'Adanya tanggapan emosional yang menyentuh hati dari para peserta di kolom chat.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Jumlah peserta yang hadir memenuhi kuota target pendaftaran yang ditentukan.', 'category_result' => 'hr'],
-                    ['option_text' => 'Tingkat retensi perhatian peserta dari awal hingga akhir acara berdasarkan data analitik.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Antusiasme peserta dalam sesi tanya jawab interaktif dan evaluasi kepuasan materi.', 'category_result' => 'trainer']
+                    ['option_text' => 'Memberikan dukungan emosional konstan agar ia tidak merasa terisolasi.'],
+                    ['option_text' => 'Mencocokkannya dengan program buddy system terstruktur dan mengenalkan regulasi kantor.'],
+                    ['option_text' => 'Menganalisis gaya belajarnya untuk menyesuaikan metode orientasi kerja.'],
+                    ['option_text' => 'Memberikan sesi presentasi pengenalan visi budaya perusahaan yang interaktif.']
                 ]
             ],
             [
-                'question_text' => 'Apa yang Anda lakukan ketika melihat konflik kepentingan di antara para pengambil kebijakan?',
+                'question_text' => 'Bagaimana Anda menyikapi kegagalan tim dalam mencapai target kuartalan?',
                 'options' => [
-                    ['option_text' => 'Melakukan pendekatan persuasif secara personal untuk menyelaraskan ego masing-masing.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Menegakkan aturan kode etik kerja dan hukum formal yang mengikat semua pihak.', 'category_result' => 'hr'],
-                    ['option_text' => 'Mengurai perbedaan pendapat tersebut ke dalam matriks perbandingan logika bisnis.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Memfasilitasi forum mediasi yang terstruktur agar keputusan bersama bisa disosialisasikan.', 'category_result' => 'trainer']
+                    ['option_text' => 'Merangkul tim agar mereka tidak terpuruk dan memulihkan mentalitas mereka.'],
+                    ['option_text' => 'Mengevaluasi pembagian beban kerja dan menyusun draf strategi perbaikan target.'],
+                    ['option_text' => 'Mengkaji ulang data estimasi target sebelumnya untuk mencari letak kesalahan proyeksi.'],
+                    ['option_text' => 'Mengadakan sesi pembelajaran interaktif untuk mengevaluasi kesalahan taktis bersama.']
                 ]
             ],
             [
-                'question_text' => 'Ketika merancang instruksi penggunaan (user manual) produk baru, Anda memprioritaskan...',
+                'question_text' => 'Apa yang Anda lakukan saat melihat rekan kerja diperlakukan tidak adil oleh atasan?',
                 'options' => [
-                    ['option_text' => 'Nada bahasa yang ramah, hangat, dan tidak membingungkan pengguna pemula.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Kesesuaian manual dengan standar kepatuhan hukum konsumen yang berlaku.', 'category_result' => 'hr'],
-                    ['option_text' => 'Kemudahan alur langkah demi langkah berdasarkan uji coba langsung ke pengguna.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Desain visual yang menarik dilengkapi video tutorial interaktif agar mudah ditiru.', 'category_result' => 'trainer']
+                    ['option_text' => 'Mendampinginya secara personal untuk memberikan dukungan mental penuh.'],
+                    ['option_text' => 'Membantunya menyusun laporan keberatan formal sesuai mekanisme hukum perusahaan.'],
+                    ['option_text' => 'Mengumpulkan kronologi kejadian secara objektif untuk menghindari bias penilaian.'],
+                    ['option_text' => 'Menyarankannya mendiskusikan masalah tersebut secara komunikatif dengan atasan.']
                 ]
             ],
             [
-                'question_text' => 'Saat Anda harus memotong anggaran tim Anda sendiri, bagaimana Anda melakukannya?',
+                'question_text' => 'Ketika merancang materi presentasi hasil riset, apa fokus utama Anda?',
                 'options' => [
-                    ['option_text' => 'Berdiskusi dari hati ke hati dengan tim untuk meminimalkan dampak psikologis kecemasan.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Memangkas pengeluaran secara merata berdasarkan analisis kontribusi performa program.', 'category_result' => 'hr'],
-                    ['option_text' => 'Menganalisis efisiensi biaya setiap program untuk mencari pos mana yang paling tidak produktif.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Mengadakan sesi brainstorming dengan tim untuk melatih kreativitas kerja hemat.', 'category_result' => 'trainer']
+                    ['option_text' => 'Menyelipkan narasi humanis tentang kepuasan emosi responden.'],
+                    ['option_text' => 'Menyusun alur presentasi yang logis, formal, dan sesuai standar eksekutif.'],
+                    ['option_text' => 'Menyertakan grafik analisis statistika perilaku yang teruji validitasnya.'],
+                    ['option_text' => 'Menggunakan analogi seru dan visual interaktif yang menarik perhatian audiens.']
                 ]
             ],
             [
-                'question_text' => 'Ketika Anda diminta memberikan pidato pembuka di acara tahunan kantor, Anda akan...',
+                'question_text' => 'Bagaimana Anda mengelola keseimbangan antara pekerjaan dan kehidupan pribadi (work-life balance)?',
                 'options' => [
-                    ['option_text' => 'Menyampaikan rasa terima kasih yang tulus atas kerja keras dan pengorbanan semua staf.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Memaparkan pencapaian target tahunan organisasi dan rencana strategis tahun depan.', 'category_result' => 'hr'],
-                    ['option_text' => 'Membagikan tren data industri masa depan serta tantangan analitis yang akan dihadapi.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Memberikan pidato motivasi yang energik dan membakar semangat juang semua hadirin.', 'category_result' => 'trainer']
+                    ['option_text' => 'Mendengarkan alarm tubuh Anda dan segera beristirahat saat emosi mulai jenuh.'],
+                    ['option_text' => 'Membuat jadwal disiplin mingguan yang memisahkan waktu kerja dan keluarga secara kaku.'],
+                    ['option_text' => 'Menganalisis produktivitas harian Anda untuk mengeliminasi aktivitas yang membuang waktu.'],
+                    ['option_text' => 'Mengikuti kelas yoga, seminar kebugaran, atau komunitas berbagi cerita inspiratif.']
                 ]
             ],
             [
-                'question_text' => 'Bagaimana tindakan Anda menghadapi anggota tim yang tidak mau menerima umpan balik?',
+                'question_text' => 'Apa tindakan Anda jika melihat salah satu anggota kelompok mendominasi jalannya rapat?',
                 'options' => [
-                    ['option_text' => 'Mengajaknya bicara santai untuk menguak ketakutan atau ego defensif di balik sikapnya.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Mencatat penolakan tersebut ke dalam file penilaian performa kerjanya secara resmi.', 'category_result' => 'hr'],
-                    ['option_text' => 'Menguji apakah metode penyampaian umpan balik kita selama ini kurang tepat bagi dirinya.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Melakukan demonstrasi langsung tentang bagaimana saran perbaikan tersebut bisa mempermudah kerjanya.', 'category_result' => 'trainer']
+                    ['option_text' => 'Mendekatinya secara personal setelah rapat selesai agar ia lebih menghargai orang lain.'],
+                    ['option_text' => 'Menerapkan aturan waktu bicara per orang sesuai agenda resmi rapat.'],
+                    ['option_text' => 'Mencatat dominasinya sebagai bias data pendapat yang harus disaring.'],
+                    ['option_text' => 'Menginterupsi secara halus untuk memberikan kesempatan bicara bagi anggota yang pasif.']
                 ]
             ],
             [
-                'question_text' => 'Ketika perusahaan ingin beralih sepenuhnya ke sistem kerja remote (WFH), Anda akan menyarankan...',
+                'question_text' => 'Saat merancang survei budaya organisasi, aspek apa yang paling ingin Anda potret?',
                 'options' => [
-                    ['option_text' => 'Memperbanyak ruang berkumpul virtual informal agar karyawan tidak merasa kesepian.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Menyusun kebijakan dan SOP komprehensif mengenai jam kerja serta absensi remote.', 'category_result' => 'hr'],
-                    ['option_text' => 'Melakukan riset produktivitas karyawan sebelum dan sesudah uji coba WFH.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Menyelenggarakan pelatihan penggunaan tools kolaborasi digital bagi seluruh karyawan.', 'category_result' => 'trainer']
+                    ['option_text' => 'Tingkat kebahagiaan psikologis dan rasa aman emosional karyawan.'],
+                    ['option_text' => 'Keseuaian perilaku kerja staf dengan nilai-nilai inti (core values) perusahaan.'],
+                    ['option_text' => 'Pola interaksi karyawan saat menggunakan fasilitas sistem digital kantor.'],
+                    ['option_text' => 'Efektivitas modul kepemimpinan manajer dalam memotivasi bawahannya.']
                 ]
             ],
             [
-                'question_text' => 'Apa reaksi pertama Anda ketika terpilih menerima penghargaan "Karyawan Terbaik"?',
+                'question_text' => 'Ketika Anda terpilih sebagai karyawan terbaik, penghargaan apa yang paling membahagiakan Anda?',
                 'options' => [
-                    ['option_text' => 'Merasa terharu dan bersyukur karena usaha tulus Anda dihargai oleh orang lain.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Melihat penghargaan tersebut sebagai batu loncatan karir untuk naik jabatan berikutnya.', 'category_result' => 'hr'],
-                    ['option_text' => 'Memikirkan variabel performa apa saja yang membuat Anda terpilih dibanding yang lain.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Menggunakan momen tersebut untuk membagikan tips sukses Anda kepada rekan-rekan kerja.', 'category_result' => 'trainer']
+                    ['option_text' => 'Apresiasi tulus dari rekan kerja yang merasa terbantu oleh keberadaan Anda.'],
+                    ['option_text' => 'Promosi kenaikan jabatan resmi dan fasilitas tunjangan yang lebih stabil.'],
+                    ['option_text' => 'Kesempatan memimpin proyek riset inovasi baru yang didanai penuh oleh kantor.'],
+                    ['option_text' => 'Kesempatan menjadi pembicara utama untuk membagikan kisah sukses Anda di depan publik.']
                 ]
             ],
             [
-                'question_text' => 'Saat merancang kuesioner penilaian kinerja 360 derajat di kantor, fokus Anda adalah...',
+                'question_text' => 'Bagaimana reaksi Anda jika sistem kerja yang Anda rancang ditolak oleh tim?',
                 'options' => [
-                    ['option_text' => 'Memastikan kerahasiaan penilaian agar penilai merasa aman memberikan feedback jujur.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Menyelaraskan kuesioner dengan standar kompetensi resmi dari departemen SDM.', 'category_result' => 'hr'],
-                    ['option_text' => 'Menguji reliabilitas dan validitas butir pertanyaan agar hasil penilaian akurat.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Memastikan kuesioner diisi dengan antusias melalui penjelasan video petunjuk pengisian.', 'category_result' => 'trainer']
+                    ['option_text' => 'Mendengar keluh kesah dan rasa frustrasi mereka untuk meredakan penolakan.'],
+                    ['option_text' => 'Meninjau kembali kesesuaian sistem baru tersebut dengan regulasi kerja formal.'],
+                    ['option_text' => 'Mengadakan uji coba terkontrol untuk mengumpulkan data kelemahan sistem secara nyata.'],
+                    ['option_text' => 'Mengadakan sesi demo interaktif untuk melatih tim tentang kemudahan sistem tersebut.']
                 ]
             ],
             [
-                'question_text' => 'Bagaimana cara Anda merangkul karyawan baru yang sangat pemalu di kantor?',
+                'question_text' => 'Apa langkah pertama Anda dalam merancang sistem penghargaan (reward system) baru?',
                 'options' => [
-                    ['option_text' => 'Mendekatinya secara perlahan dan menemaninya saat makan siang agar ia merasa nyaman.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Menugaskan rekan kerja senior sebagai buddy/mentor resminya selama masa orientasi.', 'category_result' => 'hr'],
-                    ['option_text' => 'Mengamati pola komunikasinya untuk mengetahui jenis tugas apa yang paling ia sukai.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Mengajaknya berpartisipasi aktif dalam game kelompok seru saat acara keakraban kantor.', 'category_result' => 'trainer']
+                    ['option_text' => 'Memastikan reward tersebut memberikan kebahagiaan psikologis bagi staf.'],
+                    ['option_text' => 'Menyelaraskan anggaran reward dengan performa keuangan jangka panjang bisnis.'],
+                    ['option_text' => 'Meneliti korelasi antara kepuasan kerja dengan skema reward sebelumnya.'],
+                    ['option_text' => 'Menyosialisasikan draf reward baru tersebut secara menarik agar memicu antusiasme karyawan.']
                 ]
             ],
             [
-                'question_text' => 'Ketika target proyek divisi Anda gagal tercapai, tindakan apa yang Anda prioritaskan?',
+                'question_text' => 'Ketika bawahan Anda membuat keputusan mandiri yang salah, apa sikap Anda?',
                 'options' => [
-                    ['option_text' => 'Membantu meredakan kekecewaan dan rasa frustrasi tim agar mental mereka tidak drop.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Mengevaluasi kembali alokasi sumber daya manusia dan efektivitas kerja masing-masing staf.', 'category_result' => 'hr'],
-                    ['option_text' => 'Mencari tahu variabel pengganggu mana yang paling memengaruhi kegagalan lewat data log kerja.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Membuat program perbaikan kompetensi intensif untuk mengejar ketertinggalan skill.', 'category_result' => 'trainer']
+                    ['option_text' => 'Menghibur hatinya agar tidak patah semangat, lalu mendiskusikan jalan keluarnya.'],
+                    ['option_text' => 'Menegaskan kembali batas wewenang pengambilan keputusan sesuai SOP organisasi.'],
+                    ['option_text' => 'Mengkaji variabel penyebab kesalahan keputusan tersebut untuk perbaikan sistem masa depan.'],
+                    ['option_text' => 'Menjadikan kesalahan tersebut sebagai topik studi kasus pembelajaran dalam rapat evaluasi.']
                 ]
             ],
             [
-                'question_text' => 'Saat Anda harus memimpin proyek kolaborasi antar perusahaan, Anda akan memulai dengan...',
+                'question_text' => 'Apa hal terpenting yang Anda pertimbangkan saat memilih program studi lanjutan?',
                 'options' => [
-                    ['option_text' => 'Membangun chemistry, rasa saling percaya, dan hubungan baik dengan perwakilan mitra.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Menyepakati Memorandum of Understanding (MoU) dan pembagian wewenang yang mengikat secara hukum.', 'category_result' => 'hr'],
-                    ['option_text' => 'Melakukan analisis kelayakan komprehensif serta studi kasus kemitraan serupa sebelumnya.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Mengadakan lokakarya bersama untuk menyamakan persepsi visi proyek dengan cara interaktif.', 'category_result' => 'trainer']
+                    ['option_text' => 'Kurikulum yang mengajarkan empati sosial dan pemahaman psikologi mendalam.'],
+                    ['option_text' => 'Gelar yang diakui luas di industri dan memperkuat prospek karir manajerial.'],
+                    ['option_text' => 'Ketersediaan laboratorium riset perilaku yang dilengkapi teknologi analisis terkini.'],
+                    ['option_text' => 'Metode perkuliahan yang interaktif, penuh diskusi kelas, dan melatih presentasi.']
                 ]
             ],
             [
-                'question_text' => 'Apa pandangan Anda tentang pentingnya "work-life balance" (keseimbangan hidup dan kerja)?',
+                'question_text' => 'Bagaimana cara Anda memitigasi risiko terjadinya konflik kepentingan (conflict of interest) di tim?',
                 'options' => [
-                    ['option_text' => 'Hal mutlak demi menjaga kewarasan emosional dan kesehatan mental jangka panjang.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Faktor penting untuk menekan angka absensi karyawan dan meningkatkan loyalitas organisasi.', 'category_result' => 'hr'],
-                    ['option_text' => 'Variabel psikometris yang terbukti meningkatkan kualitas fokus kognitif saat bekerja.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Tema pelatihan yang sangat bagus untuk diajarkan kepada staf agar produktivitas melonjak.', 'category_result' => 'trainer']
+                    ['option_text' => 'Membangun kesadaran moral pribadi secara interpersonal melalui keteladanan.'],
+                    ['option_text' => 'Menyusun pakta integritas resmi dan kebijakan audit kepatuhan secara berkala.'],
+                    ['option_text' => 'Menganalisis potensi benturan kepentingan melalui diagram relasi kerja tim.'],
+                    ['option_text' => 'Mengadakan sesi edukasi interaktif tentang batas etika profesional kerja.']
                 ]
             ],
             [
-                'question_text' => 'Ketika merancang antarmuka sistem pengajuan cuti karyawan, prioritas utama Anda adalah...',
+                'question_text' => 'Ketika ditugaskan memimpin proyek perubahan organisasi, langkah awal Anda adalah...',
                 'options' => [
-                    ['option_text' => 'Menambahkan pesan ramah otomatis yang mendoakan agar liburan karyawan menyenangkan.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Memastikan alur persetujuan cuti berjenjang terhubung langsung dengan sistem absensi HR.', 'category_result' => 'hr'],
-                    ['option_text' => 'Mengurangi jumlah klik dan kerumitan pengisian formulir agar ramah bagi pengguna.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Menyediakan video panduan singkat beranimasi menarik tentang cara menggunakan sistem tersebut.', 'category_result' => 'trainer']
+                    ['option_text' => 'Mendengarkan ketakutan karyawan tentang ketidakpastian masa depan akibat perubahan.'],
+                    ['option_text' => 'Menyusun draf rencana transisi peran, tanggung jawab, dan target lini masa kerja.'],
+                    ['option_text' => 'Melakukan survei kesiapan berubah karyawan berbasis instrumen perilaku.'],
+                    ['option_text' => 'Menyampaikan pidato perubahan yang menginspirasi untuk menyatukan visi masa depan.']
                 ]
             ],
             [
-                'question_text' => 'Bagaimana cara Anda menyikapi desas-desus atau gosip miring yang beredar di kantor?',
+                'question_text' => 'Bagaimana pendekatan Anda saat menyusun materi pelatihan kepemimpinan?',
                 'options' => [
-                    ['option_text' => 'Menenangkan rekan kerja yang menjadi korban gosip agar ia merasa memiliki dukungan moral.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Menyelidiki kebenaran informasi tersebut secara diam-diam demi menjaga integritas divisi.', 'category_result' => 'hr'],
-                    ['option_text' => 'Menganalisis mengapa gosip tersebut bisa menyebar luas dan bagaimana pola sosialnya.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Mengadakan sesi forum internal terbuka untuk meluruskan kesalahpahaman secara transparan.', 'category_result' => 'trainer']
+                    ['option_text' => 'Menekankan pentingnya empati, kehangatan hubungan, dan kesehatan mental staf.'],
+                    ['option_text' => 'Menekankan teknik supervisi target kerja, delegasi tugas, dan kedisiplinan organisasi.'],
+                    ['option_text' => 'Menyertakan teori-teori kepemimpinan mutakhir berbasis riset akademis yang kuat.'],
+                    ['option_text' => 'Merancang studi kasus diskusi kelompok kecil dan simulasi permainan peran (roleplay).']
                 ]
             ],
             [
-                'question_text' => 'Saat Anda diminta mendesain program sertifikasi profesi baru, langkah awal Anda adalah...',
+                'question_text' => 'Apa reaksi Anda ketika melihat pelanggaran etika ringan di lingkungan kerja?',
                 'options' => [
-                    ['option_text' => 'Menyelaraskan modul agar beban belajar tidak membuat peserta stres berkepanjangan.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Mengajukan akreditasi program ke lembaga sertifikasi resmi tingkat nasional.', 'category_result' => 'hr'],
-                    ['option_text' => 'Mengidentifikasi kompetensi inti melalui analisis mendalam kebutuhan industri terkini.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Menyusun kurikulum pengajaran yang interaktif disertai kriteria kelulusan yang menantang.', 'category_result' => 'trainer']
+                    ['option_text' => 'Mengajak pelanggar berdiskusi berdua untuk memahami latar belakang tindakannya.'],
+                    ['option_text' => 'Memberikan teguran lisan formal sesuai aturan kedisiplinan perusahaan.'],
+                    ['option_text' => 'Mencatat frekuensi pelanggaran etika tersebut untuk perbaikan sistem kontrol.'],
+                    ['option_text' => 'Menjelaskan dampak buruk pelanggaran tersebut dalam sesi evaluasi tim mingguan.']
                 ]
             ],
             [
-                'question_text' => 'Jika atasan Anda memberikan instruksi kerja yang tidak masuk akal secara teknis, Anda akan...',
+                'question_text' => 'Bagaimana Anda merespons instruksi atasan yang Anda rasa kurang efektif?',
                 'options' => [
-                    ['option_text' => 'Menyampaikan keberatan Anda dengan bahasa yang santun agar tidak menyinggung harga diri atasan.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Meninjau kembali deskripsi pekerjaan Anda untuk melihat apakah instruksi tersebut masuk wewenang Anda.', 'category_result' => 'hr'],
-                    ['option_text' => 'Menyodorkan data simulasi kegagalan teknis jika instruksi tersebut tetap dipaksakan berjalan.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Mengusulkan opsi solusi teknis alternatif yang lebih efektif dalam sesi diskusi dua arah.', 'category_result' => 'trainer']
+                    ['option_text' => 'Mendiskusikan kekhawatiran Anda secara personal demi menjaga kenyamanan hubungan kerja.'],
+                    ['option_text' => 'Meninjau kembali deskripsi pekerjaan Anda untuk melihat apakah instruksi tersebut masuk wewenang Anda.'],
+                    ['option_text' => 'Menyodorkan data simulasi kegagalan teknis jika instruksi tersebut tetap dipaksakan berjalan.'],
+                    ['option_text' => 'Mengusulkan opsi solusi teknis alternatif yang lebih efektif dalam sesi diskusi dua arah.']
                 ]
             ],
             [
                 'question_text' => 'Apa motivasi utama Anda untuk terus berkarya setiap hari?',
                 'options' => [
-                    ['option_text' => 'Keinginan tulus untuk menolong sesama manusia dan meringankan beban hidup mereka.', 'category_result' => 'konselor'],
-                    ['option_text' => 'Dorongan untuk membangun reputasi profesional, mengelola organisasi besar, dan memimpin perubahan.', 'category_result' => 'hr'],
-                    ['option_text' => 'Rasa penasaran ilmiah untuk memecahkan teka-teki perilaku manusia dan misteri sistem kerja.', 'category_result' => 'ux_researcher'],
-                    ['option_text' => 'Semangat untuk menyebarkan ilmu bermanfaat, melatih generasi penerus, dan menginspirasi publik.', 'category_result' => 'trainer']
+                    ['option_text' => 'Keinginan tulus untuk menolong sesama manusia dan meringankan beban hidup mereka.'],
+                    ['option_text' => 'Dorongan untuk membangun reputasi profesional, mengelola organisasi besar, dan memimpin perubahan.'],
+                    ['option_text' => 'Rasa penasaran ilmiah untuk memecahkan teka-teki perilaku manusia dan misteri sistem kerja.'],
+                    ['option_text' => 'Semangat untuk menyebarkan ilmu bermanfaat, melatih generasi penerus, dan menginspirasi publik.']
                 ]
             ],
         ];
 
         // 4. Seed Questions and Options
+        $professions = [
+            'dokter_medis',
+            'guru_pendidik',
+            'software_engineer',
+            'hr_talent',
+            'konselor_psikolog',
+            'financial_analyst',
+            'arsitek_desainer',
+            'entrepreneur',
+            'legal_lawyer',
+            'digital_marketer',
+            'content_creator',
+            'data_scientist'
+        ];
+
         foreach ($questionsData as $index => $qData) {
             $question = Question::create([
                 'course_id' => $course->id,
@@ -511,11 +525,15 @@ class PsychologySeeder extends Seeder
                 'order_number' => $index + 1
             ]);
 
-            foreach ($qData['options'] as $oData) {
+            foreach ($qData['options'] as $oIndex => $oData) {
+                // Assign professions in a round-robin balanced way
+                $profIndex = ($index * 4 + $oIndex) % count($professions);
+                $categoryResult = $professions[$profIndex];
+
                 QuestionOption::create([
                     'question_id' => $question->id,
                     'option_text' => $oData['option_text'],
-                    'category_result' => $oData['category_result']
+                    'category_result' => $categoryResult
                 ]);
             }
         }
