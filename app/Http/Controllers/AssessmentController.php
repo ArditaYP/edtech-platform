@@ -264,6 +264,43 @@ class AssessmentController extends Controller
             ];
         }
 
+        // Calculate 5 Dimensions for deficit analysis
+        $dokterVal = $percentages['dokter_medis'] ?? 0;
+        $guruVal = $percentages['guru_pendidik'] ?? 0;
+        $softwareVal = $percentages['software_engineer'] ?? 0;
+        $hrVal = $percentages['hr_talent'] ?? 0;
+        $konselorVal = $percentages['konselor_psikolog'] ?? 0;
+        $financialVal = $percentages['financial_analyst'] ?? 0;
+        $arsitekVal = $percentages['arsitek_desainer'] ?? 0;
+        $entrepreneurVal = $percentages['entrepreneur'] ?? 0;
+        $legalVal = $percentages['legal_lawyer'] ?? 0;
+        $marketingVal = $percentages['digital_marketer'] ?? 0;
+        $creatorVal = $percentages['content_creator'] ?? 0;
+        $dataVal = $percentages['data_scientist'] ?? 0;
+
+        $scores = [
+            'Security' => (int) min(100, max(30, round(30 + ($legalVal * 1.5) + ($dokterVal * 0.8) + ($hrVal * 0.7)))),
+            'Contribution' => (int) min(100, max(30, round(30 + ($entrepreneurVal * 1.5) + ($hrVal * 1.0) + ($financialVal * 0.5)))),
+            'Growth' => (int) min(100, max(30, round(30 + ($softwareVal * 1.2) + ($dataVal * 1.2) + ($financialVal * 0.6)))),
+            'Significance' => (int) min(100, max(30, round(30 + ($creatorVal * 1.2) + ($guruVal * 1.0) + ($marketingVal * 0.8)))),
+            'Connection' => (int) min(100, max(30, round(30 + ($konselorVal * 1.5) + ($guruVal * 0.8) + ($dokterVal * 0.7)))),
+        ];
+
+        // Find the lowest dimension
+        $sortedScores = $scores;
+        asort($sortedScores);
+        $lowestDimensionName = array_key_first($sortedScores);
+
+        $deficitAnalysisMap = [
+            'Security' => 'Kurang teliti terhadap keteraturan SOP, manajemen risiko hukum, dan administrasi detail yang berulang.',
+            'Contribution' => 'Kurang dominan dalam kepemimpinan asertif, pendelegasian tugas tim, dan pengambilan keputusan taktis.',
+            'Growth' => 'Kurang terbiasa dalam analisis data angka/statistik, riset kognitif mendalam, dan pemecahan masalah teknis yang kompleks.',
+            'Significance' => 'Kurang percaya diri dalam public speaking, persuasi audiens massal, dan membangun branding wawasan di forum terbuka.',
+            'Connection' => 'Kurang sensitif terhadap dinamika emosional tim, mediasi konflik interpersonal, dan kesabaran dalam konseling.',
+        ];
+
+        $deficitText = $deficitAnalysisMap[$lowestDimensionName] ?? 'Kurang terbiasa dalam pendelegasian tugas dan regulasi formal.';
+
         $topDetail = $details[$topCategory] ?? $details['hr_talent'];
         $lowestDetail = $details[$lowestCategory] ?? $details['konselor_psikolog'];
 
@@ -272,7 +309,9 @@ class AssessmentController extends Controller
             'lowest_category' => $lowestCategory,
             'development_area' => $lowestDetail['dev_area'],
             'actionable_advice' => $topDetail['advices'],
-            'top_careers' => $topCareersFormatted
+            'top_careers' => $topCareersFormatted,
+            'lowest_dimension' => $lowestDimensionName,
+            'deficit_text' => $deficitText
         ];
 
         // Save result
@@ -384,6 +423,42 @@ class AssessmentController extends Controller
             ];
         }
 
+        // Calculate/retrieve lowest deficit text
+        $deficitText = $weaknessAnalysis['deficit_text'] ?? null;
+        if (empty($deficitText)) {
+            $dokterVal = $percentages['dokter_medis'] ?? 0;
+            $guruVal = $percentages['guru_pendidik'] ?? 0;
+            $softwareVal = $percentages['software_engineer'] ?? 0;
+            $hrVal = $percentages['hr_talent'] ?? 0;
+            $konselorVal = $percentages['konselor_psikolog'] ?? 0;
+            $financialVal = $percentages['financial_analyst'] ?? 0;
+            $arsitekVal = $percentages['arsitek_desainer'] ?? 0;
+            $entrepreneurVal = $percentages['entrepreneur'] ?? 0;
+            $legalVal = $percentages['legal_lawyer'] ?? 0;
+            $marketingVal = $percentages['digital_marketer'] ?? 0;
+            $creatorVal = $percentages['content_creator'] ?? 0;
+            $dataVal = $percentages['data_scientist'] ?? 0;
+
+            $tempScores = [
+                'Security' => (int) min(100, max(30, round(30 + ($legalVal * 1.5) + ($dokterVal * 0.8) + ($hrVal * 0.7)))),
+                'Contribution' => (int) min(100, max(30, round(30 + ($entrepreneurVal * 1.5) + ($hrVal * 1.0) + ($financialVal * 0.5)))),
+                'Growth' => (int) min(100, max(30, round(30 + ($softwareVal * 1.2) + ($dataVal * 1.2) + ($financialVal * 0.6)))),
+                'Significance' => (int) min(100, max(30, round(30 + ($creatorVal * 1.2) + ($guruVal * 1.0) + ($marketingVal * 0.8)))),
+                'Connection' => (int) min(100, max(30, round(30 + ($konselorVal * 1.5) + ($guruVal * 0.8) + ($dokterVal * 0.7)))),
+            ];
+            asort($tempScores);
+            $lowName = array_key_first($tempScores);
+            
+            $deficitAnalysisMap = [
+                'Security' => 'Kurang teliti terhadap keteraturan SOP, manajemen risiko hukum, dan administrasi detail yang berulang.',
+                'Contribution' => 'Kurang dominan dalam kepemimpinan asertif, pendelegasian tugas tim, dan pengambilan keputusan taktis.',
+                'Growth' => 'Kurang terbiasa dalam analisis data angka/statistik, riset kognitif mendalam, dan pemecahan masalah teknis yang kompleks.',
+                'Significance' => 'Kurang percaya diri dalam public speaking, persuasi audiens massal, dan membangun branding wawasan di forum terbuka.',
+                'Connection' => 'Kurang sensitif terhadap dinamika emosional tim, mediasi konflik interpersonal, dan kesabaran dalam konseling.',
+            ];
+            $deficitText = $deficitAnalysisMap[$lowName] ?? 'Kurang terbiasa dalam pendelegasian tugas dan regulasi formal.';
+        }
+
         // Generate radar chart for top careers
         $radarChartUrl = $this->getRadarChartUrl($topCareers);
         $radarChartBase64 = '';
@@ -420,7 +495,8 @@ class AssessmentController extends Controller
             'signatureBase64',
             'top',
             'categoryDetails',
-            'weaknessAnalysis'
+            'weaknessAnalysis',
+            'deficitText'
         ));
         $pdf->setPaper('a4', 'portrait');
 

@@ -101,7 +101,8 @@
             border: 1px solid #E2E8F0;
             border-radius: 4px;
             padding: 5px 6px;
-            height: 95px;
+            height: auto;
+            min-height: 120px;
         }
         .grid-box-title {
             font-size: 7pt;
@@ -258,35 +259,34 @@
                 <div class="main-section-title">Rencana Pengembangan Diri</div>
                 <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; margin-top: 3px;">
                     <tr>
-                        <!-- Col 1: Blind Spot -->
+                        <!-- Col 1: Blind Spot Utama -->
                         <td width="33%" valign="top" style="padding-right: 4px;">
-                            <div class="grid-box" style="border-top: 3px solid #D97706; background-color: #FFFBEB;">
+                            <div class="grid-box" style="border-top: 3px solid #D97706; background-color: #FFFBEB; min-height: 120px;">
                                 <div class="grid-box-title" style="color: #B45309;">⚠️ Blind Spot Utama</div>
                                 <div class="grid-box-content" style="color: #78350F;">
                                     {{ $weaknessAnalysis['top_blind_spot'] }}
                                 </div>
                             </div>
                         </td>
-                        <!-- Col 2: Langkah Praktis -->
+                        <!-- Col 2: Area Kekurangan -->
                         <td width="34%" valign="top" style="padding: 0 2px;">
-                            <div class="grid-box" style="border-top: 3px solid #10B981;">
-                                <div class="grid-box-title" style="color: #047857;">💡 Langkah Praktis</div>
-                                <div class="grid-box-content">
+                            <div class="grid-box" style="border-top: 3px solid #E11D48; background-color: #FFF1F2; min-height: 120px;">
+                                <div class="grid-box-title" style="color: #9F1239;">🔴 Area Kekurangan</div>
+                                <div class="grid-box-content" style="color: #4C0519;">
+                                    {{ $deficitText }}
+                                </div>
+                            </div>
+                        </td>
+                        <!-- Col 3: Langkah Perbaikan -->
+                        <td width="33%" valign="top" style="padding-left: 4px;">
+                            <div class="grid-box" style="border-top: 3px solid #059669; background-color: #ECFDF5; min-height: 120px;">
+                                <div class="grid-box-title" style="color: #065F46;">🟢 Langkah Perbaikan</div>
+                                <div class="grid-box-content" style="color: #022C22; font-size: 6.6pt;">
                                     <ul style="margin: 0; padding-left: 8px;">
                                         @foreach($weaknessAnalysis['actionable_advice'] as $advice)
                                             <li style="margin-bottom: 2px;">{{ $advice }}</li>
                                         @endforeach
                                     </ul>
-                                </div>
-                            </div>
-                        </td>
-                        <!-- Col 3: Wawasan Utama -->
-                        <td width="33%" valign="top" style="padding-left: 4px;">
-                            <div class="grid-box" style="border-top: 3px solid #3B82F6;">
-                                <div class="grid-box-title" style="color: #1D4ED8;">🚀 Wawasan Utama</div>
-                                <div class="grid-box-content">
-                                    {{ $weaknessAnalysis['development_area'] }}
-                                    <div style="margin-top: 3px; font-weight: bold; color: #1E293B; font-size: 6.5pt;">Gaya Kerja: {{ $top['insight'] }}</div>
                                 </div>
                             </div>
                         </td>
@@ -304,7 +304,7 @@
                             <div style="display: inline-block; text-align: center;">
                                 <span style="font-size: 6.5pt; color: #64748B; display: block; margin-bottom: 1px;">Denpasar, Bali</span>
                                 @if($signatureBase64)
-                                    <img src="{{ $signatureBase64 }}" style="width: 70px; height: 22px; display: inline-block; vertical-align: middle;" />
+                                    <img src="{{ $signatureBase64 }}" style="width: 75px; height: 22px; display: inline-block; vertical-align: middle;" />
                                 @endif
                                 <div style="font-size: 8pt; font-weight: bold; color: #0F172A; text-decoration: underline; margin-top: 1px;">
                                     Dr. Aris Sudrajat, M.Psi.
